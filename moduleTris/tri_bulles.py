@@ -11,7 +11,7 @@ def isSorted(tab:list)->bool:
     """Fonction booléenne qui retourne True si le tableau passé en paramètre est trié"""
     #Le booléen de sorite
     isTrue = True    
-    #la longueur du tableau
+    #La longueur du tableau
     n=len(tab)
     
     #Preconditions    
@@ -30,6 +30,32 @@ def isSorted(tab:list)->bool:
 
     return isTrue
 
+def permuteTab_i_j(tab:list,i:int,j:int)->list:
+    """Fonction qui permute les éléments i et j d'un tableau passé en paramètre"""
+    #La longueur du tableau
+    n=len(tab)
+
+    #Preconditions
+    assert n>0,"Le tableau est vide"
+    assert i in range(n),"i n'est pas un indice du tableau"
+    assert j in range(n),"j n'est pas un indice du tableau"
+
+    #variable tampon
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j]= temp
+
+    #Postconditions
+    assert len(tab)==n,"Le nombre d'éléments du tableau a changé"
+    assert temp in tab,"tab[i] a disparu"
+    assert tab[i] in tab,"tab[j] a disparu"
+
+    return tab
+    
+
+
+    
+    
 def tri_bulles(tab:list)->list:
     """Fonction de tri à bulles
     `Paramètres`
@@ -96,6 +122,10 @@ if __name__=="__main__" :
     print(tab_a_trier)
     print(tri_bulles(tab_a_trier))
     print(isSorted([1,2,3,4,5,6,7,8]))
+    tab_permute=[1,2,3,4,5]
+    print(tab_permute)
+    print(permuteTab_i_j(tab_permute,2,3))
+    print(tab_permute)
     
 
     
