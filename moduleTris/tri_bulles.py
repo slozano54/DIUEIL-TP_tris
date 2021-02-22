@@ -51,10 +51,7 @@ def permuteTab_i_j(tab:list,i:int,j:int)->list:
     assert tab[i] in tab,"tab[j] a disparu"
 
     return tab
-    
-
-
-    
+  
     
 def tri_bulles(tab:list)->list:
     """Fonction de tri à bulles
@@ -72,11 +69,11 @@ def tri_bulles(tab:list)->list:
 
     `Invariant`
     
-        * 
+        * les éléments n-i à n sont triés
 
     `Postconditions`
     
-        * 
+        * le tableau est trié
     
 
     `Exemples`
@@ -88,8 +85,6 @@ def tri_bulles(tab:list)->list:
 
     # On récupère la taille du tableau dans une variable
     n = len(tab)
-    # on copie le tableau d'origine
-    tab_copy = copy.deepcopy(tab)     
 
     #preconditions
     assert isinstance(tab,list),"Le parametre n'est pas une liste"
@@ -99,21 +94,21 @@ def tri_bulles(tab:list)->list:
     if n>=2 :
         # Traverser tous les éléments du tableau
         for i in range(n):
-            # INVARIANT : 
-            # le tableau contient toujours les mêmes n éléments 
+            # INVARIANT :             
             # Les éléments n-i à n sont triés
-            print("i=",i," : ",tab)
+            #print("i=",i," : ",tab)
             assert isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
             assert len(tab)==n,"Le nombre d'éléments du tableau a changé"            
             for j in range(0, n-i-1):
                 # Si l'élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] > tab[j+1] :
-                    tab[j], tab[j+1] = tab[j+1], tab[j]
+                    #tab[j], tab[j+1] = tab[j+1], tab[j]
+                    permuteTab_i_j(tab,j,j+1)
 
     #postconditions
-    assert len(tab)==n,"Le nombre d'éléments du tableau a changé"            
-    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?    
-    # il faudrait vérifier que le tableau est trié, peut être avec une fonction à part ?
+    assert len(tab)==n,"Le nombre d'éléments du tableau a changé"                
+    assert isSorted(tab),"Le tableau n'est pas trié"
+    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
     return tab
 
@@ -121,11 +116,7 @@ if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
     print(tri_bulles(tab_a_trier))
-    print(isSorted([1,2,3,4,5,6,7,8]))
-    tab_permute=[1,2,3,4,5]
-    print(tab_permute)
-    print(permuteTab_i_j(tab_permute,2,3))
-    print(tab_permute)
+ 
     
 
     
