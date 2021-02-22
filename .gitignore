@@ -1,0 +1,4 @@
+# On ignore le dossier .vscode
+.vscode/
+# On ignore le zip
+#diueil-TP_tris.zip
