@@ -34,7 +34,54 @@
 &#34;&#34;&#34;
 pass
 
+import copy
 
+def isSorted(tab:list)-&gt;bool:
+    &#34;&#34;&#34;Fonction booléenne qui retourne True si le tableau passé en paramètre est trié&#34;&#34;&#34;
+    #Le booléen de sorite
+    isTrue = True    
+    #La longueur du tableau
+    n=len(tab)
+    
+    #Preconditions    
+    assert isinstance(tab,list),&#34;le paramètre n&#39;est pas une liste&#34;
+
+    #initialisation du compteur de boucle
+    i=0
+    while i&lt;n-1:
+        #Invariant  : le ième élément est inférieur au (i+1)ème
+        if tab[i]&gt;tab[i+1]:
+            isTrue = False
+        i+=1
+    
+    #Postconditions
+    assert isTrue==True,&#34;Le tableau n&#39;est pas trié&#34;
+
+    return isTrue
+
+def permuteTab_i_j(tab:list,i:int,j:int)-&gt;list:
+    &#34;&#34;&#34;Fonction qui permute les éléments i et j d&#39;un tableau passé en paramètre&#34;&#34;&#34;
+    #La longueur du tableau
+    n=len(tab)
+
+    #Preconditions
+    assert n&gt;0,&#34;Le tableau est vide&#34;
+    assert i in range(n),&#34;i n&#39;est pas un indice du tableau&#34;
+    assert j in range(n),&#34;j n&#39;est pas un indice du tableau&#34;
+
+    #variable tampon
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j]= temp
+
+    #Postconditions
+    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;
+    assert temp in tab,&#34;tab[i] a disparu&#34;
+    assert tab[i] in tab,&#34;tab[j] a disparu&#34;
+
+    return tab
+  
+    
 def tri_bulles(tab:list)-&gt;list:
     &#34;&#34;&#34;Fonction de tri à bulles
     `Paramètres`
@@ -45,9 +92,18 @@ def tri_bulles(tab:list)-&gt;list:
 
         * le tableau trié
     
-    `Notes`
+    `Préconditions`
     
-        * ...
+        * Le tableau n&#39;est pas vide 
+
+    `Invariant`
+    
+        * les éléments n-i à n sont triés
+
+    `Postconditions`
+    
+        * le tableau est trié
+    
 
     `Exemples`
     
@@ -57,7 +113,7 @@ def tri_bulles(tab:list)-&gt;list:
     pass
 
     # On récupère la taille du tableau dans une variable
-    n = len(tab)    
+    n = len(tab)
 
     #preconditions
     assert isinstance(tab,list),&#34;Le parametre n&#39;est pas une liste&#34;
@@ -67,26 +123,28 @@ def tri_bulles(tab:list)-&gt;list:
     if n&gt;=2 :
         # Traverser tous les éléments du tableau
         for i in range(n):
-            # INVARIANT : le tableau contient toujours n éléments
+            # INVARIANT :             
+            # Les éléments n-i à n sont triés
+            #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
+            assert isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
             assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
             for j in range(0, n-i-1):
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
-                    tab[j], tab[j+1] = tab[j+1], tab[j]
+                    #tab[j], tab[j+1] = tab[j+1], tab[j]
+                    permuteTab_i_j(tab,j,j+1)
 
     #postconditions
-    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?
-    # il faudrait vérifier que le tableau est trié, peut être avec une fonction à part ?
+    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;                
+    assert isSorted(tab),&#34;Le tableau n&#39;est pas trié&#34;
+    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
     return tab
 
 if __name__==&#34;__main__&#34; :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_bulles(tab_a_trier))
-    
-    </code></pre>
+    print(tri_bulles(tab_a_trier))</code></pre>
 </details>
 </section>
 <section>
@@ -96,6 +154,71 @@ if __name__==&#34;__main__&#34; :
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="moduleTris.tri_bulles.isSorted"><code class="name flex">
+<span>def <span class="ident">isSorted</span></span>(<span>tab: list) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fonction booléenne qui retourne True si le tableau passé en paramètre est trié</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isSorted(tab:list)-&gt;bool:
+    &#34;&#34;&#34;Fonction booléenne qui retourne True si le tableau passé en paramètre est trié&#34;&#34;&#34;
+    #Le booléen de sorite
+    isTrue = True    
+    #La longueur du tableau
+    n=len(tab)
+    
+    #Preconditions    
+    assert isinstance(tab,list),&#34;le paramètre n&#39;est pas une liste&#34;
+
+    #initialisation du compteur de boucle
+    i=0
+    while i&lt;n-1:
+        #Invariant  : le ième élément est inférieur au (i+1)ème
+        if tab[i]&gt;tab[i+1]:
+            isTrue = False
+        i+=1
+    
+    #Postconditions
+    assert isTrue==True,&#34;Le tableau n&#39;est pas trié&#34;
+
+    return isTrue</code></pre>
+</details>
+</dd>
+<dt id="moduleTris.tri_bulles.permuteTab_i_j"><code class="name flex">
+<span>def <span class="ident">permuteTab_i_j</span></span>(<span>tab: list, i: int, j: int) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fonction qui permute les éléments i et j d'un tableau passé en paramètre</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def permuteTab_i_j(tab:list,i:int,j:int)-&gt;list:
+    &#34;&#34;&#34;Fonction qui permute les éléments i et j d&#39;un tableau passé en paramètre&#34;&#34;&#34;
+    #La longueur du tableau
+    n=len(tab)
+
+    #Preconditions
+    assert n&gt;0,&#34;Le tableau est vide&#34;
+    assert i in range(n),&#34;i n&#39;est pas un indice du tableau&#34;
+    assert j in range(n),&#34;j n&#39;est pas un indice du tableau&#34;
+
+    #variable tampon
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j]= temp
+
+    #Postconditions
+    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;
+    assert temp in tab,&#34;tab[i] a disparu&#34;
+    assert tab[i] in tab,&#34;tab[j] a disparu&#34;
+
+    return tab</code></pre>
+</details>
+</dd>
 <dt id="moduleTris.tri_bulles.tri_bulles"><code class="name flex">
 <span>def <span class="ident">tri_bulles</span></span>(<span>tab: list) ‑> list</span>
 </code></dt>
@@ -107,8 +230,14 @@ if __name__==&#34;__main__&#34; :
 <p><code>Sorties</code></p>
 <pre><code>* le tableau trié
 </code></pre>
-<p><code>Notes</code></p>
-<pre><code>* ...
+<p><code>Préconditions</code></p>
+<pre><code>* Le tableau n'est pas vide
+</code></pre>
+<p><code>Invariant</code></p>
+<pre><code>* les éléments n-i à n sont triés
+</code></pre>
+<p><code>Postconditions</code></p>
+<pre><code>* le tableau est trié
 </code></pre>
 <p><code>Exemples</code></p>
 <pre><code class="language-python-repl">&gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
@@ -128,9 +257,18 @@ if __name__==&#34;__main__&#34; :
 
         * le tableau trié
     
-    `Notes`
+    `Préconditions`
     
-        * ...
+        * Le tableau n&#39;est pas vide 
+
+    `Invariant`
+    
+        * les éléments n-i à n sont triés
+
+    `Postconditions`
+    
+        * le tableau est trié
+    
 
     `Exemples`
     
@@ -140,7 +278,7 @@ if __name__==&#34;__main__&#34; :
     pass
 
     # On récupère la taille du tableau dans une variable
-    n = len(tab)    
+    n = len(tab)
 
     #preconditions
     assert isinstance(tab,list),&#34;Le parametre n&#39;est pas une liste&#34;
@@ -150,17 +288,21 @@ if __name__==&#34;__main__&#34; :
     if n&gt;=2 :
         # Traverser tous les éléments du tableau
         for i in range(n):
-            # INVARIANT : le tableau contient toujours n éléments
+            # INVARIANT :             
+            # Les éléments n-i à n sont triés
+            #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
+            assert isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
             assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
             for j in range(0, n-i-1):
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
-                    tab[j], tab[j+1] = tab[j+1], tab[j]
+                    #tab[j], tab[j+1] = tab[j+1], tab[j]
+                    permuteTab_i_j(tab,j,j+1)
 
     #postconditions
-    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?
-    # il faudrait vérifier que le tableau est trié, peut être avec une fonction à part ?
+    assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;                
+    assert isSorted(tab),&#34;Le tableau n&#39;est pas trié&#34;
+    # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
     return tab</code></pre>
 </details>
@@ -183,6 +325,8 @@ if __name__==&#34;__main__&#34; :
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="moduleTris.tri_bulles.isSorted" href="#moduleTris.tri_bulles.isSorted">isSorted</a></code></li>
+<li><code><a title="moduleTris.tri_bulles.permuteTab_i_j" href="#moduleTris.tri_bulles.permuteTab_i_j">permuteTab_i_j</a></code></li>
 <li><code><a title="moduleTris.tri_bulles.tri_bulles" href="#moduleTris.tri_bulles.tri_bulles">tri_bulles</a></code></li>
 </ul>
 </li>
