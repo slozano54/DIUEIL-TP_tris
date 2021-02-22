@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 #-*- coding: utf8 -*-
 """
-    Procédure tri à bulle
+    Procédure tri à bulles
 """
 pass
 
 
-def tri_bulle(tab:list)->list:
-    """Fonction de tri à bulle
+def tri_bulles(tab:list)->list:
+    """Fonction de tri à bulles
     `Paramètres`
 
         * tab : Une liste.        
@@ -55,7 +55,7 @@ def tri_bulle(tab:list)->list:
 if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_bulle(tab_a_trier))
+    print(tri_bulles(tab_a_trier))
     
     
 
