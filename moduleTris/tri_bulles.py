@@ -116,10 +116,3 @@ if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
     print(tri_bulles(tab_a_trier))
- 
-    
-
-    
-    
-
-
