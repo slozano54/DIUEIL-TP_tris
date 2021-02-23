@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
 <title>moduleTris.tri_bulles_plus API documentation</title>
-<meta name="description" content="Procédure tri à bulles optimisé
-Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !" />
+<meta name="description" content="Procédure tri à bulles optimisé …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -23,8 +22,12 @@ Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !" /
 <h1 class="title">Module <code>moduleTris.tri_bulles_plus</code></h1>
 </header>
 <section id="section-intro">
-<p>Procédure tri à bulles optimisé
-Si un parcours interne ne fait aucun échange c'est que le tri est fini !</p>
+<h2 id="procedure-tri-a-bulles-optimise">Procédure tri à bulles optimisé</h2>
+<ul>
+<li>On compare les éléments deux à deux en parcourant tout le tableau.</li>
+<li>On les échange s'il sont mal triés.</li>
+<li>Si un parcours interne ne fait aucun échange c'est que le tri est fini !</li>
+</ul>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -32,8 +35,11 @@ Si un parcours interne ne fait aucun échange c'est que le tri est fini !</p>
 <pre><code class="python">#!/usr/bin/python3
 #-*- coding: utf8 -*-
 &#34;&#34;&#34;
-    Procédure tri à bulles optimisé
-    Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !
+    ## Procédure tri à bulles optimisé
+
+    * On compare les éléments deux à deux en parcourant tout le tableau.
+    * On les échange s&#39;il sont mal triés.
+    * Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !
 &#34;&#34;&#34;
 pass
 
@@ -83,12 +89,10 @@ def tri_bulles_plus(tab:list)-&gt;list:
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
-        tour_de_boucle=0
         # Traverser tous les éléments du tableau dans le pire cas
         # mais on s&#39;arrete dès que le tableau est trié
         i=0
         while (i&lt;n and (ui.isSorted(tab)==False)):
-            tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
@@ -100,7 +104,6 @@ def tri_bulles_plus(tab:list)-&gt;list:
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
             i+=1
-        print(&#34;Tour de boucle : &#34;,tour_de_boucle)
 
     #postconditions
     assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;                
@@ -189,12 +192,10 @@ if __name__==&#34;__main__&#34; :
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
-        tour_de_boucle=0
         # Traverser tous les éléments du tableau dans le pire cas
         # mais on s&#39;arrete dès que le tableau est trié
         i=0
         while (i&lt;n and (ui.isSorted(tab)==False)):
-            tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
@@ -206,7 +207,6 @@ if __name__==&#34;__main__&#34; :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
             i+=1
-        print(&#34;Tour de boucle : &#34;,tour_de_boucle)
 
     #postconditions
     assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;                
@@ -224,7 +224,9 @@ if __name__==&#34;__main__&#34; :
 <nav id="sidebar">
 <h1>Index</h1>
 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#procedure-tri-a-bulles-optimise">Procédure tri à bulles optimisé</a></li>
+</ul>
 </div>
 <ul id="index">
 <li><h3>Super-module</h3>
