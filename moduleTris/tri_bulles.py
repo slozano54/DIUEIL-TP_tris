@@ -51,11 +51,13 @@ def tri_bulles(tab:list)->list:
 
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
+        tour_de_boucle = 0
         # Traverser tous les éléments du tableau
         for i in range(n):
+            tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
-            print("i=",i," : ",tab)
+            #print("i=",i," : ",tab)
             assert ui.isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
             assert len(tab)==n,"Le nombre d'éléments du tableau a changé"            
             for j in range(0, n-i-1):
@@ -63,6 +65,8 @@ def tri_bulles(tab:list)->list:
                 if tab[j] > tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
+        
+        print("Tour de boucle : ",tour_de_boucle)
 
     #postconditions
     assert len(tab)==n,"Le nombre d'éléments du tableau a changé"                
