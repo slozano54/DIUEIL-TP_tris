@@ -1,4 +1,8 @@
 # On ignore le dossier .vscode
 .vscode/
+
+# on ignore tous les csv
+*.csv
+
 # On ignore le zip
 #diueil-TP_tris.zip

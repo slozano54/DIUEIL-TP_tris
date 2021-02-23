@@ -10,12 +10,13 @@ pass
 from datetime import datetime 
 # Pour copier
 import copy 
-#Modules perso
+# Modules perso
 from moduleTris.tri_bulles import tri_bulles  
 from moduleTris.tri_bulles_plus import tri_bulles_plus  
 from moduleTris.tri_selection import tri_selection
 from moduleTris.tri_rapide_non_recursif import tri_rapide_non_recursif
-
+# mesures de Temps de Fabien
+from mesureTempsTri import *
 
 
 # Script principal
@@ -56,6 +57,16 @@ def main():
     print("  Test de tri_rapide_non_recursif()) en cours ...  ")           
     print(tri_rapide_non_recursif(tab_a_trier_trnr))
     print(" ")
+
+    # Tests avec les fonctions de Fabien
+    print("=============================================================================")    
+    print("  Tests avec les fonctions de Fabien en cours ...  ")
+    print("")
+    print("  On génère toutes les listes pour les tests ...  ")
+    genereToutesLesListes(3, 10000000)
+    print("")
+    print("  On teste la fonction ...  ")
+    tempsTriAleatoire(fctSort, 3, 10000000, "sortSurListeAleatoire.csv")           
 
     # On évalue le temps de traitement
     end_time = datetime.now()
