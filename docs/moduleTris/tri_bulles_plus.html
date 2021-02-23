@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>moduleTris.tri_bulles API documentation</title>
-<meta name="description" content="Procédure tri à bulles" />
+<title>moduleTris.tri_bulles_plus API documentation</title>
+<meta name="description" content="Procédure tri à bulles optimisé
+Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,10 +20,11 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>moduleTris.tri_bulles</code></h1>
+<h1 class="title">Module <code>moduleTris.tri_bulles_plus</code></h1>
 </header>
 <section id="section-intro">
-<p>Procédure tri à bulles</p>
+<p>Procédure tri à bulles optimisé
+Si un parcours interne ne fait aucun échange c'est que le tri est fini !</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -30,7 +32,8 @@
 <pre><code class="python">#!/usr/bin/python3
 #-*- coding: utf8 -*-
 &#34;&#34;&#34;
-    Procédure tri à bulles
+    Procédure tri à bulles optimisé
+    Si un parcours interne ne fait aucun échange c&#39;est que le tri est fini !
 &#34;&#34;&#34;
 pass
 
@@ -41,7 +44,7 @@ else:
     import moduleTris.utils as ui   
 
     
-def tri_bulles(tab:list)-&gt;list:
+def tri_bulles_plus(tab:list)-&gt;list:
     &#34;&#34;&#34;Fonction de tri à bulles
     `Paramètres`
 
@@ -80,21 +83,23 @@ def tri_bulles(tab:list)-&gt;list:
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
-        tour_de_boucle = 0
-        # Traverser tous les éléments du tableau
-        for i in range(n):
+        tour_de_boucle=0
+        # Traverser tous les éléments du tableau dans le pire cas
+        # mais on s&#39;arrete dès que le tableau est trié
+        i=0
+        while (i&lt;n and (ui.isSorted(tab)==False)):
             tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
             assert ui.isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
             assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-            for j in range(0, n-i-1):
+            for j in range(0, n-i-1):            
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
-        
+            i+=1
         print(&#34;Tour de boucle : &#34;,tour_de_boucle)
 
     #postconditions
@@ -107,7 +112,7 @@ def tri_bulles(tab:list)-&gt;list:
 if __name__==&#34;__main__&#34; :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_bulles(tab_a_trier))</code></pre>
+    print(tri_bulles_plus(tab_a_trier))</code></pre>
 </details>
 </section>
 <section>
@@ -117,8 +122,8 @@ if __name__==&#34;__main__&#34; :
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="moduleTris.tri_bulles.tri_bulles"><code class="name flex">
-<span>def <span class="ident">tri_bulles</span></span>(<span>tab: list) ‑> list</span>
+<dt id="moduleTris.tri_bulles_plus.tri_bulles_plus"><code class="name flex">
+<span>def <span class="ident">tri_bulles_plus</span></span>(<span>tab: list) ‑> list</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Fonction de tri à bulles
@@ -145,7 +150,7 @@ if __name__==&#34;__main__&#34; :
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def tri_bulles(tab:list)-&gt;list:
+<pre><code class="python">def tri_bulles_plus(tab:list)-&gt;list:
     &#34;&#34;&#34;Fonction de tri à bulles
     `Paramètres`
 
@@ -184,21 +189,23 @@ if __name__==&#34;__main__&#34; :
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
-        tour_de_boucle = 0
-        # Traverser tous les éléments du tableau
-        for i in range(n):
+        tour_de_boucle=0
+        # Traverser tous les éléments du tableau dans le pire cas
+        # mais on s&#39;arrete dès que le tableau est trié
+        i=0
+        while (i&lt;n and (ui.isSorted(tab)==False)):
             tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
             assert ui.isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
             assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-            for j in range(0, n-i-1):
+            for j in range(0, n-i-1):            
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
-        
+            i+=1
         print(&#34;Tour de boucle : &#34;,tour_de_boucle)
 
     #postconditions
@@ -227,7 +234,7 @@ if __name__==&#34;__main__&#34; :
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="moduleTris.tri_bulles.tri_bulles" href="#moduleTris.tri_bulles.tri_bulles">tri_bulles</a></code></li>
+<li><code><a title="moduleTris.tri_bulles_plus.tri_bulles_plus" href="#moduleTris.tri_bulles_plus.tri_bulles_plus">tri_bulles_plus</a></code></li>
 </ul>
 </li>
 </ul>
