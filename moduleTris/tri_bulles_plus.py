@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 #-*- coding: utf8 -*-
 """
-    Procédure tri à bulles optimisé
-    Si un parcours interne ne fait aucun échange c'est que le tri est fini !
+    ## Procédure tri à bulles optimisé
+
+    * On compare les éléments deux à deux en parcourant tout le tableau.
+    * On les échange s'il sont mal triés.
+    * Si un parcours interne ne fait aucun échange c'est que le tri est fini !
 """
 pass
 
@@ -52,12 +55,10 @@ def tri_bulles_plus(tab:list)->list:
 
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
-        tour_de_boucle=0
         # Traverser tous les éléments du tableau dans le pire cas
         # mais on s'arrete dès que le tableau est trié
         i=0
         while (i<n and (ui.isSorted(tab)==False)):
-            tour_de_boucle+=1
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             #print("i=",i," : ",tab)
@@ -69,7 +70,6 @@ def tri_bulles_plus(tab:list)->list:
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
             i+=1
-        print("Tour de boucle : ",tour_de_boucle)
 
     #postconditions
     assert len(tab)==n,"Le nombre d'éléments du tableau a changé"                

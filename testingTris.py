@@ -24,20 +24,28 @@ def main():
     # Tableau à trier
     print("=============================================================================")    
     tab_a_trier=[5,4,3,2,1]
-    tab_a_trier_bis=copy.deepcopy(tab_a_trier)
+    tab_a_trier_tb=copy.deepcopy(tab_a_trier)
+    tab_a_trier_tbp=copy.deepcopy(tab_a_trier)
+    tab_a_trier_ts=copy.deepcopy(tab_a_trier)
     print("tableau à trier : ",tab_a_trier)
     print(" ")
 
     # On teste tri_bulles()
     print("=============================================================================")
     print("  Test de tri_bulles() en cours ...  ")           
-    print(tri_bulles(tab_a_trier))
+    print(tri_bulles(tab_a_trier_tb))
     print(" ")
 
     # On teste tri_bulles_plus()
     print("=============================================================================")    
     print("  Test de tri_bulles_plus() en cours ...  ")           
-    print(tri_bulles_plus(tab_a_trier_bis))
+    print(tri_bulles_plus(tab_a_trier_tbp))
+    print(" ")
+
+    # On teste tri_selection()
+    print("=============================================================================")    
+    print("  Test de tri_selection() en cours ...  ")           
+    print(tri_bulles_plus(tab_a_trier_ts))
     print(" ")
 
     # On évalue le temps de traitement
