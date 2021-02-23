@@ -98,6 +98,7 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 	'''
 	
 	fichier=open(nomFichierRapportCsv,"w")
+	fichier.write("n;"+nomFichierRapportCsv+"\n")
 	
 	tableau=[] #liste de listes de temps pour chaque valeur de n
 	tabn=[] #liste des valeurs de n
@@ -174,17 +175,35 @@ def triSelection(liste):
 		i=i+1
 	return liste
 	
+def triPivot(liste):
+	if liste == []:
+		return []
+	else:
+		pivot = liste[0]
+		t1 = []
+		t2 = []
+		for x in liste[1:]:
+			if x<pivot:
+				t1.append(x)
+			else:
+				t2.append(x)
+		return triPivot(t1)+[pivot]+triPivot(t2)
+
+	
 
 
 if __name__=="__main__" :
 	
 	p=12 #exposant de puissance de 2 pour la taille des listes à trier
 	
-	genereToutesLesListes(3, pow(2,p))
+	genereToutesLesListes(2, pow(2,p))
 	
-	tempsTriAleatoire(fctSort, 3, pow(2,p), "sortListeAleatoire.csv")
+	tempsTriAleatoire(fctSort, 2, pow(2,p), "sortListeAleatoire.csv")
 	
-	tempsTriAleatoire(tri_bulles_plus.tri_bulles_plus, 3, pow(2,p), "bullesPlusListeAleatoire.csv")
+	tempsTriAleatoire(tri_bulles_plus.tri_bulles_plus, 2, pow(2,p), "bullesPlusListeAleatoire.csv")
 	
-	tempsTriAleatoire(triSelection, 3, pow(2,p), "selectionListeAleatoire.csv")
+	tempsTriAleatoire(triSelection, 2, pow(2,p), "selectionListeAleatoire.csv")
+	
+	tempsTriAleatoire(triPivot, 2, pow(2,p), "pivotListeAleatoire.csv")
+
 
