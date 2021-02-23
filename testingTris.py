@@ -77,8 +77,11 @@ def main():
     p=12 #exposant de puissance de 2 pour la taille des listes à trier
     print("=============================================================================")    
     print("On génère toutes les listes pour les tests si elles n'existent pas déjà ...")    
-    print("")
-    genereToutesLesListes(3, pow(2,p))
+    print("") 
+    if (not os.path.exists("./csv_files2test")):
+        genereToutesLesListes(3, pow(2,p))
+    elif (len(os.listdir("./csv_files2test")) == 0):
+        genereToutesLesListes(3, pow(2,p))            
     print("")
     print("=============================================================================")    
     print("On teste la fonction sort  ")    
