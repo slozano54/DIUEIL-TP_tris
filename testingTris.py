@@ -13,6 +13,8 @@ import copy
 #Modules perso
 from moduleTris.tri_bulles import tri_bulles  
 from moduleTris.tri_bulles_plus import tri_bulles_plus  
+from moduleTris.tri_selection import tri_selection
+from moduleTris.tri_rapide_non_recursif import tri_rapide_non_recursif
 
 
 
@@ -27,6 +29,7 @@ def main():
     tab_a_trier_tb=copy.deepcopy(tab_a_trier)
     tab_a_trier_tbp=copy.deepcopy(tab_a_trier)
     tab_a_trier_ts=copy.deepcopy(tab_a_trier)
+    tab_a_trier_trnr=copy.deepcopy(tab_a_trier)
     print("tableau à trier : ",tab_a_trier)
     print(" ")
 
@@ -45,7 +48,13 @@ def main():
     # On teste tri_selection()
     print("=============================================================================")    
     print("  Test de tri_selection() en cours ...  ")           
-    print(tri_bulles_plus(tab_a_trier_ts))
+    print(tri_selection(tab_a_trier_ts))
+    print(" ")
+    
+    # On teste tri_rapide_non_recursif()
+    print("=============================================================================")    
+    print("  Test de tri_rapide_non_recursif()) en cours ...  ")           
+    print(tri_rapide_non_recursif(tab_a_trier_trnr))
     print(" ")
 
     # On évalue le temps de traitement
