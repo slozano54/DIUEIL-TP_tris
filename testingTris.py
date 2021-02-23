@@ -88,10 +88,14 @@ def main():
     tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_bulle_plus  ")
-    #tempsTriAleatoire(tri_bulles_plus.tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
+    tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_selection  ")
-    #tempsTriAleatoire(triSelection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
+    tempsTriAleatoire(tri_selection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
+    print("=============================================================================")    
+    print("On teste la fonction tri_rapide_non_recursif  ")
+    tempsTriAleatoire(tri_rapide_non_recursif, 3, pow(2,p), "resultats_rapide_non_recursifListeAleatoire.csv")
+
 
     # On évalue le temps de traitement
     end_time = datetime.now()
