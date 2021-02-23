@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 #-*- coding: utf8 -*-
 """
-    Procédure tri à bulles
+    Procédure tri à bulles optimisé
+    Si un parcours interne ne fait aucun échange c'est que le tri est fini !
 """
 pass
 
@@ -12,7 +13,7 @@ else:
     import moduleTris.utils as ui   
 
     
-def tri_bulles(tab:list)->list:
+def tri_bulles_plus(tab:list)->list:
     """Fonction de tri à bulles
     `Paramètres`
 
@@ -51,18 +52,21 @@ def tri_bulles(tab:list)->list:
 
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
-        # Traverser tous les éléments du tableau
-        for i in range(n):
+        # Traverser tous les éléments du tableau dans le pire cas
+        # mais on s'arrete dès que le tableau est trié
+        i=0
+        while (i<n and (ui.isSorted(tab)==False)):
             # INVARIANT :             
             # Les éléments n-i à n sont triés
             print("i=",i," : ",tab)
             assert ui.isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
             assert len(tab)==n,"Le nombre d'éléments du tableau a changé"            
-            for j in range(0, n-i-1):
+            for j in range(0, n-i-1):            
                 # Si l'élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] > tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
                     ui.permuteTab_i_j(tab,j,j+1)
+            i+=1
 
     #postconditions
     assert len(tab)==n,"Le nombre d'éléments du tableau a changé"                
@@ -74,4 +78,4 @@ def tri_bulles(tab:list)->list:
 if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_bulles(tab_a_trier))
+    print(tri_bulles_plus(tab_a_trier))

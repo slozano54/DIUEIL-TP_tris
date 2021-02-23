@@ -24,7 +24,8 @@ def isSorted(tab:list)->bool:
         i+=1
     
     #Postconditions
-    assert isTrue==True,"Le tableau n'est pas trié"
+    #assert isTrue==True,"Le tableau n'est pas trié"
+    #En fait non sinon je ne peux pas m'en servir
 
     return isTrue
 
