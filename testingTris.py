@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #-*- coding: utf8 -*-
 """
-    Génère la documentation
+    Teste les fonctions de tri
 """
 pass
 
