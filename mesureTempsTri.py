@@ -1,4 +1,6 @@
 import time
+import random
+import copy
 
 def generateurListeCsv(tri, n, nomFichier):
 	'''
@@ -99,16 +101,30 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 	
 	#mesure des temps d'exécution
 	for i in range(nombreTris):
-		listeAleatoire=restitueListe(str(i)+"aleatoire10000000.csv")      
+		listeAleatoire=restitueListe(str(i)+"aleatoire"+str(nMax)+".csv") 
+		tab=[]     
 		n=1	
 		while n<=nMax :
-			t=mesureTempsExecutionTri(fonctionTri, listeAleatoire[:n])
+			listeATrier=copy.deepcopy(listeAleatoire[:n])
+			t=mesureTempsExecutionTri(fonctionTri, listeATrier)
 			print("temps moyen pour trier "+str(n)+" entiers d'une liste aléatoire : "+str(t)+" ms")
-			fichier.write(str(n)+";"+str(t)+"\n")
-			if i==0 :
-				tabn.append(n)
+			tab.append(t)
 			n=n*10
-	
+		tableau.append(tab)
+		
+	#calcul des moyennes de temps d'exécution et enregistrement dans le fichier csv
+	xMax=len(tableau)
+	yMax=len(tableau[0])
+	y=0
+	while y<yMax :
+		t=0.0
+		x=0
+		while x<xMax :
+			t=t+tableau[x][y]
+			x=x+1
+		t=t/float(xMax)
+		fichier.write(str(pow(10,y))+";"+str(t)+"\n")
+		y=y+1
 	
 	fichier.close()
 	
@@ -120,4 +136,5 @@ def fctSort(liste):
 	liste.sort()
 
 if __name__=="__main__" :
-	tempsTriAleatoire(fctSort, 5, 10000000, "sortSurListeAleatoire.csv")
+	genereToutesLesListes(3, 10000000)
+	tempsTriAleatoire(fctSort, 3, 10000000, "sortSurListeAleatoire.csv")
