@@ -9,6 +9,8 @@
     * On cherche le plus grand indice j tel que tableau[j] soit inférieur ou égal au pivot
     * si i<j on échange tableau[i] et tableau[j]
     * On recommence
+
+    De cette manière le pivot est à sa place définitive
 """
 pass
 
@@ -28,7 +30,25 @@ def isGreater(x:int,y:int)->bool:
         isGreater = False
     return isGreater
 
-def partition(tab, start, end):
+def partition(tab:list, start:int, end:int)->int:
+    """
+Fonction pour partionner le tableau
+
+**Paramètres**<br>
+
+* tab : une liste
+* start : un entier pour l'indice du pivot
+* end : un entier pour le second indice
+
+**Sorties** start : un entier l'indice de la place du pivot<br>
+**Notes** On commence arbitrairement par le premier élément du tableau en guise de pivot.<br>
+**Exemples**	
+>>> my_tab_to_sort = [5,1,2,4,3]
+[1,2,3,4,5]
+
+    """
+    pass
+
     while start < end:
         # au debut de cette boucle, on partitionne avec start
         while start < end:
@@ -44,8 +64,21 @@ def partition(tab, start, end):
             start = start + 1
     return start
  
-def tri_rapide_non_recursif(tab, start=None, end=None):
-    """tri rapide non récursif."""
+def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
+    """
+Tri rapide non récursif.
+
+**Paramètres**
+
+* tab: une liste
+* start : un entier par défaut à None
+* end : un entier par défaut à None
+
+**Sorties** Le tableau trié
+
+    """
+    pass
+
     # initialiser
     if start is None: start = 0
     if end is None: end = len(tab)

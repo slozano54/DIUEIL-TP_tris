@@ -31,6 +31,7 @@
 <li>si i&lt;j on échange tableau[i] et tableau[j]</li>
 <li>On recommence</li>
 </ul>
+<p>De cette manière le pivot est à sa place définitive</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -46,6 +47,8 @@
     * On cherche le plus grand indice j tel que tableau[j] soit inférieur ou égal au pivot
     * si i&lt;j on échange tableau[i] et tableau[j]
     * On recommence
+
+    De cette manière le pivot est à sa place définitive
 &#34;&#34;&#34;
 pass
 
@@ -65,7 +68,25 @@ def isGreater(x:int,y:int)-&gt;bool:
         isGreater = False
     return isGreater
 
-def partition(tab, start, end):
+def partition(tab:list, start:int, end:int)-&gt;int:
+    &#34;&#34;&#34;
+Fonction pour partionner le tableau
+
+**Paramètres**&lt;br&gt;
+
+* tab : une liste
+* start : un entier pour l&#39;indice du pivot
+* end : un entier pour le second indice
+
+**Sorties** start : un entier l&#39;indice de la place du pivot&lt;br&gt;
+**Notes** On commence arbitrairement par le premier élément du tableau en guise de pivot.&lt;br&gt;
+**Exemples**    
+&gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
+[1,2,3,4,5]
+
+    &#34;&#34;&#34;
+    pass
+
     while start &lt; end:
         # au debut de cette boucle, on partitionne avec start
         while start &lt; end:
@@ -81,8 +102,21 @@ def partition(tab, start, end):
             start = start + 1
     return start
  
-def tri_rapide_non_recursif(tab, start=None, end=None):
-    &#34;&#34;&#34;tri rapide non récursif.&#34;&#34;&#34;
+def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
+    &#34;&#34;&#34;
+Tri rapide non récursif.
+
+**Paramètres**
+
+* tab: une liste
+* start : un entier par défaut à None
+* end : un entier par défaut à None
+
+**Sorties** Le tableau trié
+
+    &#34;&#34;&#34;
+    pass
+
     # initialiser
     if start is None: start = 0
     if end is None: end = len(tab)
@@ -139,15 +173,46 @@ if __name__==&#34;__main__&#34; :
 </details>
 </dd>
 <dt id="moduleTris.tri_rapide_non_recursif.partition"><code class="name flex">
-<span>def <span class="ident">partition</span></span>(<span>tab, start, end)</span>
+<span>def <span class="ident">partition</span></span>(<span>tab: list, start: int, end: int) ‑> int</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Fonction pour partionner le tableau</p>
+<p><strong>Paramètres</strong><br></p>
+<ul>
+<li>tab : une liste</li>
+<li>start : un entier pour l'indice du pivot</li>
+<li>end : un entier pour le second indice</li>
+</ul>
+<p><strong>Sorties</strong> start : un entier l'indice de la place du pivot<br>
+<strong>Notes</strong> On commence arbitrairement par le premier élément du tableau en guise de pivot.<br>
+<strong>Exemples</strong>
+</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
+[1,2,3,4,5]
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def partition(tab, start, end):
+<pre><code class="python">def partition(tab:list, start:int, end:int)-&gt;int:
+    &#34;&#34;&#34;
+Fonction pour partionner le tableau
+
+**Paramètres**&lt;br&gt;
+
+* tab : une liste
+* start : un entier pour l&#39;indice du pivot
+* end : un entier pour le second indice
+
+**Sorties** start : un entier l&#39;indice de la place du pivot&lt;br&gt;
+**Notes** On commence arbitrairement par le premier élément du tableau en guise de pivot.&lt;br&gt;
+**Exemples**    
+&gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
+[1,2,3,4,5]
+
+    &#34;&#34;&#34;
+    pass
+
     while start &lt; end:
         # au debut de cette boucle, on partitionne avec start
         while start &lt; end:
@@ -165,16 +230,36 @@ if __name__==&#34;__main__&#34; :
 </details>
 </dd>
 <dt id="moduleTris.tri_rapide_non_recursif.tri_rapide_non_recursif"><code class="name flex">
-<span>def <span class="ident">tri_rapide_non_recursif</span></span>(<span>tab, start=None, end=None)</span>
+<span>def <span class="ident">tri_rapide_non_recursif</span></span>(<span>tab: list, start=None, end=None) ‑> list</span>
 </code></dt>
 <dd>
-<div class="desc"><p>tri rapide non récursif.</p></div>
+<div class="desc"><p>Tri rapide non récursif.</p>
+<p><strong>Paramètres</strong></p>
+<ul>
+<li>tab: une liste</li>
+<li>start : un entier par défaut à None</li>
+<li>end : un entier par défaut à None</li>
+</ul>
+<p><strong>Sorties</strong> Le tableau trié</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def tri_rapide_non_recursif(tab, start=None, end=None):
-    &#34;&#34;&#34;tri rapide non récursif.&#34;&#34;&#34;
+<pre><code class="python">def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
+    &#34;&#34;&#34;
+Tri rapide non récursif.
+
+**Paramètres**
+
+* tab: une liste
+* start : un entier par défaut à None
+* end : un entier par défaut à None
+
+**Sorties** Le tableau trié
+
+    &#34;&#34;&#34;
+    pass
+
     # initialiser
     if start is None: start = 0
     if end is None: end = len(tab)
