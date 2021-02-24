@@ -32,19 +32,19 @@ def isGreater(x:int,y:int)->bool:
 
 def partition(tab:list, start:int, end:int)->int:
     """
-Fonction pour partionner le tableau
+    Fonction pour partionner le tableau
 
-**Paramètres**<br>
+    **Paramètres**<br>
 
-* tab : une liste
-* start : un entier pour l'indice du pivot
-* end : un entier pour le second indice
+    * tab : une liste
+    * start : un entier pour l'indice du pivot
+    * end : un entier pour le second indice
 
-**Sorties** start : un entier l'indice de la place du pivot<br>
-**Notes** On commence arbitrairement par le premier élément du tableau en guise de pivot.<br>
-**Exemples**	
->>> my_tab_to_sort = [5,1,2,4,3]
-[1,2,3,4,5]
+    **Sorties** start : un entier l'indice de la place du pivot<br>
+    **Notes** On commence arbitrairement par le premier élément du tableau en guise de pivot.<br>
+    **Exemples**	
+    >>> my_tab_to_sort = [5,1,2,4,3]
+    [1,2,3,4,5]
 
     """
     pass
@@ -66,15 +66,15 @@ Fonction pour partionner le tableau
  
 def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     """
-Tri rapide non récursif.
+    Tri rapide non récursif.
 
-**Paramètres**
+    **Paramètres**
 
-* tab: une liste
-* start : un entier par défaut à None
-* end : un entier par défaut à None
+    * tab: une liste
+    * start : un entier par défaut à None
+    * end : un entier par défaut à None
 
-**Sorties** Le tableau trié
+    **Sorties** Le tableau trié
 
     """
     pass

@@ -18,16 +18,16 @@ else:
     
 def tri_bulles_plus(tab:list)->list:
     """
-Fonction de tri à bulles
-   
-**Paramètres** tab : Une liste.<br>
-**Sorties** le tableau trié<br>
-**Préconditions** Le tableau n'est pas vide<br> 
-**Invariant** les éléments n-i à n sont triés<br>
-**Postconditions** le tableau est trié<br>
-**Exemples**
->>> my_tab_to_sort = [5,1,2,4,3]
-[1,2,3,4,5]
+    Fonction de tri à bulles
+    
+    **Paramètres** tab : Une liste.<br>
+    **Sorties** le tableau trié<br>
+    **Préconditions** Le tableau n'est pas vide<br> 
+    **Invariant** les éléments n-i à n sont triés<br>
+    **Postconditions** le tableau est trié<br>
+    **Exemples**
+    >>> my_tab_to_sort = [5,1,2,4,3]
+    [1,2,3,4,5]
     """
     pass
 
