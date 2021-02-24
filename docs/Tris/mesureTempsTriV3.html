@@ -182,9 +182,11 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
                 n=1     
                 while n&lt;=nMax :
                         listeATrier=copy.deepcopy(listeAleatoire[:n])
+                        global spy #espion
+                        spy=0     #espion
                         t=mesureTempsExecutionTri(fonctionTri, listeATrier)
                         print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)
-                        tab.append(t)
+                        tab.append([spy, t])
                         n=n*2
                 tableau.append(tab)
                 
@@ -488,9 +490,11 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
                 n=1     
                 while n&lt;=nMax :
                         listeATrier=copy.deepcopy(listeAleatoire[:n])
+                        global spy #espion
+                        spy=0     #espion
                         t=mesureTempsExecutionTri(fonctionTri, listeATrier)
                         print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)
-                        tab.append(t)
+                        tab.append([spy, t])
                         n=n*2
                 tableau.append(tab)
                 
