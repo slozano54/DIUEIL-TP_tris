@@ -7,13 +7,13 @@ pass
 
 def fctSort(liste:list)->list:
 	"""
-Mise en forme de la fonction sort pour effectuer le test de mesure de temps.
-	
-**Paramètres** liste : une liste	
-**Sorties** la liste triée	
-**Exemples**	
->>> my_tab_to_sort = [5,1,2,4,3]
-[1,2,3,4,5]
+    Mise en forme de la fonction sort pour effectuer le test de mesure de temps.
+        
+    **Paramètres** liste : une liste	
+    **Sorties** la liste triée	
+    **Exemples**	
+    >>> my_tab_to_sort = [5,1,2,4,3]
+    [1,2,3,4,5]
 
     """
 	pass
