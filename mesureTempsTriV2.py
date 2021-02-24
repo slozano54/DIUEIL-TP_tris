@@ -1,8 +1,8 @@
 import time
 import random
 import copy
-from moduleTris import tri_bulles
-from moduleTris import tri_bulles_plus
+from Tris import tri_bulles
+from Tris import tri_bulles_plus
 
 
 def generateurListeCsv(tri, n, nomFichier):
