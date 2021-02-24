@@ -34,8 +34,14 @@
 &#34;&#34;&#34;
 pass
 
+# On fait les imports nécessaires selon le contexte
+if __name__ == &#34;__main__&#34;:        
+    from config import *
+else:    
+    from Tris.config import *
+
 def fctSort(liste:list)-&gt;list:
-        &#34;&#34;&#34;
+    &#34;&#34;&#34;
     Mise en forme de la fonction sort pour effectuer le test de mesure de temps.
         
     **Paramètres** liste : une liste    
@@ -45,10 +51,14 @@ def fctSort(liste:list)-&gt;list:
     [1,2,3,4,5]
 
     &#34;&#34;&#34;
-        pass
+    pass
 
-        liste.sort()
-        return liste
+    global spy
+    spy = 0
+    liste.sort()    
+    spy +=1
+    
+    return [liste,spy]
 
 if __name__==&#34;__main__&#34; :
     tab_a_trier=[5,4,3,2,1]
@@ -81,7 +91,7 @@ if __name__==&#34;__main__&#34; :
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def fctSort(liste:list)-&gt;list:
-        &#34;&#34;&#34;
+    &#34;&#34;&#34;
     Mise en forme de la fonction sort pour effectuer le test de mesure de temps.
         
     **Paramètres** liste : une liste    
@@ -91,10 +101,14 @@ if __name__==&#34;__main__&#34; :
     [1,2,3,4,5]
 
     &#34;&#34;&#34;
-        pass
+    pass
 
-        liste.sort()
-        return liste</code></pre>
+    global spy
+    spy = 0
+    liste.sort()    
+    spy +=1
+    
+    return [liste,spy]</code></pre>
 </details>
 </dd>
 </dl>

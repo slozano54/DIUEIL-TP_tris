@@ -45,9 +45,11 @@ pass
 
 # On fait les imports nécessaires selon le contexte
 if __name__ == &#34;__main__&#34;:    
-    import utils as ui    
+    import utils as ui
+    from config import *
 else:
     import Tris.utils as ui   
+    from Tris.config import *  
 
     
 def tri_bulles_plus(tab:list)-&gt;list:
@@ -71,7 +73,9 @@ def tri_bulles_plus(tab:list)-&gt;list:
     #preconditions
     assert isinstance(tab,list),&#34;Le parametre n&#39;est pas une liste&#34;
     assert n&gt;0,&#34;La liste est vide&#34;
-
+    #espion
+    global spy
+    spy = 0
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
         # Traverser tous les éléments du tableau dans le pire cas
@@ -82,8 +86,10 @@ def tri_bulles_plus(tab:list)-&gt;list:
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
             assert ui.isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
-            assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-            for j in range(0, n-i-1):            
+            assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;
+            spy += 1 #espion            
+            for j in range(0, n-i-1):
+                spy += 1  #espion          
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
@@ -95,7 +101,7 @@ def tri_bulles_plus(tab:list)-&gt;list:
     assert ui.isSorted(tab),&#34;Le tableau n&#39;est pas trié&#34;
     # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
-    return tab
+    return [tab,spy]
 
 if __name__==&#34;__main__&#34; :
     tab_a_trier=[5,4,3,2,1]
@@ -149,7 +155,9 @@ if __name__==&#34;__main__&#34; :
     #preconditions
     assert isinstance(tab,list),&#34;Le parametre n&#39;est pas une liste&#34;
     assert n&gt;0,&#34;La liste est vide&#34;
-
+    #espion
+    global spy
+    spy = 0
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
         # Traverser tous les éléments du tableau dans le pire cas
@@ -160,8 +168,10 @@ if __name__==&#34;__main__&#34; :
             # Les éléments n-i à n sont triés
             #print(&#34;i=&#34;,i,&#34; : &#34;,tab)
             assert ui.isSorted(tab[n-i:n]),&#34;Le tableau n&#39;est pas trié de n-i à n&#34;
-            assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;            
-            for j in range(0, n-i-1):            
+            assert len(tab)==n,&#34;Le nombre d&#39;éléments du tableau a changé&#34;
+            spy += 1 #espion            
+            for j in range(0, n-i-1):
+                spy += 1  #espion          
                 # Si l&#39;élément trouvé est plus grand que le suivant on échange les deux
                 if tab[j] &gt; tab[j+1] :
                     #tab[j], tab[j+1] = tab[j+1], tab[j]
@@ -173,7 +183,7 @@ if __name__==&#34;__main__&#34; :
     assert ui.isSorted(tab),&#34;Le tableau n&#39;est pas trié&#34;
     # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
-    return tab</code></pre>
+    return [tab,spy]</code></pre>
 </details>
 </dd>
 </dl>

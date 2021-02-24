@@ -45,9 +45,11 @@ pass
 
 # On fait les imports nécessaires selon le contexte
 if __name__ == &#34;__main__&#34;:    
-    import utils as ui    
+    import utils as ui
+    from config import *
 else:
-    import Tris.utils as ui     
+    import Tris.utils as ui   
+    from Tris.config import *    
     
 def tri_selection(tab:list)-&gt;list:
     &#34;&#34;&#34;
@@ -64,18 +66,21 @@ def tri_selection(tab:list)-&gt;list:
 
     # Taille du tableau
     n = len(tab)
+    global spy
+    spy = 0
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
         # intialiser le compteur de boucle
         i=0
         while (i&lt;=n-2):
-            
+            spy += 1 #espion
             # indice du plus petit élement restant
             i_min = i
             # initialiser le compteur de boucle pour les éléments du tableau restant
             j=i+1
             while (j&lt;=n-1):
+                spy += 1 #espion
                 # si on trouve un plus petit élément on modifie l&#39;indice i_min
                 if tab[j] &lt; tab[i_min]:
                     i_min = j
@@ -87,8 +92,8 @@ def tri_selection(tab:list)-&gt;list:
             # incrémenter le compteur boucle principale
             i+=1
     
-    # on retourne le tableau trié
-    return tab    
+    # on retourne le tableau trié et l&#39;espion
+    return [tab,spy]    
 
 
 if __name__==&#34;__main__&#34; :
@@ -136,18 +141,21 @@ if __name__==&#34;__main__&#34; :
 
     # Taille du tableau
     n = len(tab)
+    global spy
+    spy = 0
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
     if n&gt;=2 :
         # intialiser le compteur de boucle
         i=0
         while (i&lt;=n-2):
-            
+            spy += 1 #espion
             # indice du plus petit élement restant
             i_min = i
             # initialiser le compteur de boucle pour les éléments du tableau restant
             j=i+1
             while (j&lt;=n-1):
+                spy += 1 #espion
                 # si on trouve un plus petit élément on modifie l&#39;indice i_min
                 if tab[j] &lt; tab[i_min]:
                     i_min = j
@@ -159,8 +167,8 @@ if __name__==&#34;__main__&#34; :
             # incrémenter le compteur boucle principale
             i+=1
     
-    # on retourne le tableau trié
-    return tab    </code></pre>
+    # on retourne le tableau trié et l&#39;espion
+    return [tab,spy]    </code></pre>
 </details>
 </dd>
 </dl>
