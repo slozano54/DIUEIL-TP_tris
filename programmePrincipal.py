@@ -19,50 +19,48 @@ from Tris.tri_rapide_non_recursif import tri_rapide_non_recursif
 # mesures de Temps de Fabien
 from Tris.mesureTempsTriV3 import *
 # spy bot de Fabien
-from Tris.global_spy import *
-
-# variable globale espion
-spy = 0
+#from Tris.global_spy import *
+#import Tris.config
 
 # Script principal
-def main():
+def main():    
     # On récupère la date au début du traitement
     start_time = datetime.now()
 
-    # Tableau à trier
-    print("=============================================================================")    
-    tab_a_trier=[5,4,3,2,1]
-    tab_a_trier_sp=copy.deepcopy(tab_a_trier) # pour la fonction sort() de python
-    tab_a_trier_tb=copy.deepcopy(tab_a_trier) # pour la fonction tri_bulles
-    tab_a_trier_tbp=copy.deepcopy(tab_a_trier) # pour la fonction tri_bulles_plus
-    tab_a_trier_ts=copy.deepcopy(tab_a_trier) # pour la fonction tri_selection
-    tab_a_trier_trnr=copy.deepcopy(tab_a_trier) # pour la fonction tri_rapide_non_recursif
-    print("tableau à trier : ",tab_a_trier)
-    print(" ")
+    # # Tableau à trier
+    # print("=============================================================================")    
+    # tab_a_trier=[5,4,3,2,1]
+    # tab_a_trier_sp=copy.deepcopy(tab_a_trier) # pour la fonction sort() de python
+    # tab_a_trier_tb=copy.deepcopy(tab_a_trier) # pour la fonction tri_bulles
+    # tab_a_trier_tbp=copy.deepcopy(tab_a_trier) # pour la fonction tri_bulles_plus
+    # tab_a_trier_ts=copy.deepcopy(tab_a_trier) # pour la fonction tri_selection
+    # tab_a_trier_trnr=copy.deepcopy(tab_a_trier) # pour la fonction tri_rapide_non_recursif
+    # print("tableau à trier : ",tab_a_trier)
+    # print(" ")
 
-    # On teste tri_bulles()
-    print("=============================================================================")
-    print("Test de tri_bulles() en cours ...  ")           
-    print(tri_bulles(tab_a_trier_tb))    
-    print(" ")
+    # # On teste tri_bulles()
+    # print("=============================================================================")
+    # print("Test de tri_bulles() en cours ...  ")           
+    # print(tri_bulles(tab_a_trier_tb))    
+    # print(" ")
 
-    # On teste tri_bulles_plus()
-    print("=============================================================================")    
-    print("Test de tri_bulles_plus() en cours ...  ")           
-    print(tri_bulles_plus(tab_a_trier_tbp))
-    print(" ")
+    # # On teste tri_bulles_plus()
+    # print("=============================================================================")    
+    # print("Test de tri_bulles_plus() en cours ...  ")           
+    # print(tri_bulles_plus(tab_a_trier_tbp))
+    # print(" ")
 
-    # On teste tri_selection()
-    print("=============================================================================")    
-    print("Test de tri_selection() en cours ...  ")           
-    print(tri_selection(tab_a_trier_ts))
-    print(" ")
+    # # On teste tri_selection()
+    # print("=============================================================================")    
+    # print("Test de tri_selection() en cours ...  ")           
+    # print(tri_selection(tab_a_trier_ts))
+    # print(" ")
     
-    # On teste tri_rapide_non_recursif()
-    print("=============================================================================")    
-    print("Test de tri_rapide_non_recursif()) en cours ...  ")           
-    print(tri_rapide_non_recursif(tab_a_trier_trnr))
-    print(" ")
+    # # On teste tri_rapide_non_recursif()
+    # print("=============================================================================")    
+    # print("Test de tri_rapide_non_recursif()) en cours ...  ")           
+    # print(tri_rapide_non_recursif(tab_a_trier_trnr))
+    # print(" ")
 
     # # Tests avec les fonctions de Fabien
     # print("=============================================================================")    
@@ -76,34 +74,34 @@ def main():
 
     # Tests avec les fonctions de Fabien
     print("=============================================================================")    
-    print("Tests avec mesureTempsTriV3 de Fabien en cours ...  ")
+    print("Tests avec mesureTempsTriV3 de Fabien et Moi en cours ...  ")
     print("")
-    p=12 #exposant de puissance de 2 pour la taille des listes à trier
+    p=2 #exposant de puissance de 2 pour la taille des listes à trier
+
     print("=============================================================================")    
     print("On génère toutes les listes pour les tests si elles n'existent pas déjà ...")    
     print("") 
-    if (not os.path.exists("./csv_files2test")):
-        genereToutesLesListes(3, pow(2,p))
-    elif (len(os.listdir("./csv_files2test")) == 0):
-        genereToutesLesListes(3, pow(2,p))            
+    #if (not os.path.exists("./csv_files2test")):
+    #    genereToutesLesListes(3, pow(2,p))
+    # elif (len(os.listdir("./csv_files2test")) == 0):
+    #     genereToutesLesListes(3, pow(2,p))            
+    genereToutesLesListes(3, pow(2,p))
     print("")
     print("=============================================================================")    
     print("On teste la fonction sort  ")    
-    #tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
+    tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
     print("=============================================================================")    
-    print("On teste la fonction tri_bulles  ")
-    print("global spy : ",spy)
-    tempsTriAleatoire(tri_bulles, 3, pow(2,p), "resultats_bullesListeAleatoire.csv")
-    print("global spy : ",spy)
+    print("On teste la fonction tri_bulles  ")    
+    tempsTriAleatoire(tri_bulles, 3, pow(2,p), "resultats_bullesListeAleatoire.csv")        
     print("=============================================================================")    
     print("On teste la fonction tri_bulles_plus  ")
-    #tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
+    tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_selection  ")
-    #tempsTriAleatoire(tri_selection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
+    tempsTriAleatoire(tri_selection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_rapide_non_recursif  ")
-    #tempsTriAleatoire(tri_rapide_non_recursif, 3, pow(2,p), "resultats_rapide_non_recursifListeAleatoire.csv")
+    tempsTriAleatoire(tri_rapide_non_recursif, 3, pow(2,p), "resultats_rapide_non_recursifListeAleatoire.csv")
 
 
     # On évalue le temps de traitement
