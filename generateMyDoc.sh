@@ -20,4 +20,4 @@
 #==========> https://google.github.io/styleguide/pyguide.html  
 #########################################################################################
 
-pdoc --force --html -o docs moduleTris
+pdoc --force --html -o docs Tris
