@@ -1,7 +1,7 @@
 import time
 import random
 import copy
-from moduleTris import utils as ui
+from Tris import utils as ui
 
 def generateurListeCsv(tri, n, nomFichier):
 	'''

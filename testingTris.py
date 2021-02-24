@@ -11,13 +11,13 @@ from datetime import datetime
 # Pour copier
 import copy 
 # Modules perso
-from moduleTris.tri_sort_python import fctSort
-from moduleTris.tri_bulles import tri_bulles  
-from moduleTris.tri_bulles_plus import tri_bulles_plus  
-from moduleTris.tri_selection import tri_selection
-from moduleTris.tri_rapide_non_recursif import tri_rapide_non_recursif
+from Tris.tri_sort_python import fctSort
+from Tris.tri_bulles import tri_bulles  
+from Tris.tri_bulles_plus import tri_bulles_plus  
+from Tris.tri_selection import tri_selection
+from Tris.tri_rapide_non_recursif import tri_rapide_non_recursif
 # mesures de Temps de Fabien
-from moduleTris.mesureTempsTriV3 import *
+from Tris.mesureTempsTriV3 import *
 
 
 # Script principal
@@ -85,16 +85,16 @@ def main():
     print("")
     print("=============================================================================")    
     print("On teste la fonction sort  ")    
-    tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
+    #tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_bulle_plus  ")
-    tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
+    #tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_selection  ")
-    tempsTriAleatoire(tri_selection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
+    #tempsTriAleatoire(tri_selection, 3, pow(2,p), "resultats_selectionListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_rapide_non_recursif  ")
-    tempsTriAleatoire(tri_rapide_non_recursif, 3, pow(2,p), "resultats_rapide_non_recursifListeAleatoire.csv")
+    #tempsTriAleatoire(tri_rapide_non_recursif, 3, pow(2,p), "resultats_rapide_non_recursifListeAleatoire.csv")
 
 
     # On évalue le temps de traitement
