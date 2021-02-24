@@ -7,9 +7,8 @@
 # Génère la page d'accueil de la documentation pdoc3
 
 """
-    # DIU EIL 2020/2022 - BLOC2 - Projet Compléxité   
-
-    Module tri
+    # DIU EIL 2020/2022 
+    ## BLOC2 - Projet Compléxité    
 
 """
 pass
