@@ -42,169 +42,188 @@ import copy
 # Pour pouvoir créer un répertoire, ici pour y mettre les fichiers csv
 import os
 
+# pour pouvoir utiliser la variable globale spy et les méthodes qui s&#39;y rapportent
+# On fait les imports nécessaires selon le contexte
+if __name__ == &#34;__main__&#34;:    
+    #from global_spy import *   
+    from config import *
+else:
+    #from Tris.global_spy import *
+    from Tris.config import *
+
+
+
 def generateurListeCsv(tri, n, nomFichier):
-        &#34;&#34;&#34;
-        **generateurListeCsv** prend en paramètres :
+    &#34;&#34;&#34;
+    **generateurListeCsv** prend en paramètres :
 
-        - tri : une chaine de caractère désignant si la liste est triée d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
-        - n : un entier correspondant au nombre d&#39;éléments dans la liste;
-        - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
+    - tri : une chaine de caractère désignant si la liste est triée d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
+    - n : un entier correspondant au nombre d&#39;éléments dans la liste;
+    - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
 
-        **generateurListeCsv** génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
-        &#34;&#34;&#34;
-        pass
+    **generateurListeCsv** génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
+    &#34;&#34;&#34;
+    pass
 
-        # On crée le dossier qui va accueillir les fichiers csv s&#39;il n&#39;existe pas
-        path_csv = &#34;./csv_files2test/&#34;
-        if not os.path.exists(path_csv):
-                os.mkdir(path_csv)
+    # On crée le dossier qui va accueillir les fichiers csv s&#39;il n&#39;existe pas
+    path_csv = &#34;./csv_files2test/&#34;
+    if not os.path.exists(path_csv):
+        os.mkdir(path_csv)
 
-        fichier=open(path_csv+nomFichier,&#34;w&#34;)
-        if tri.lower()==&#34;croissant&#34; :
-                i=0
-                while i&lt;n :
-                        if i!= n-1 :
-                                fichier.write(str(i)+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i+1
-        elif tri.lower()==&#34;decroissant&#34; :
-                i=n-1
-                while i&gt;=0 :
-                        if i!=0 :
-                                fichier.write(str(i)+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i-1
-        else :
-                i=0
-                while i&lt;n :
-                        if i!= n-1 :
-                                fichier.write(str(random.randint(0,n))+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i+1
-        fichier.close()
-
-def genereToutesLesListes(nombre, n):
-        &#34;&#34;&#34;
-        **genereToutesLesListes** prend en paramètre :
-
-        - nombre : entier &gt;=1 correspondant au nombre de listes aléatoires à générer;
-        - n : entier correspondant au nombre dentiers dans les listes à générer
-
-        **genereToutesLesListes** génère des fichiers .csv contenant des listes d&#39;entiers.
-        &#34;&#34;&#34;
-        pass
-
-        generateurListeCsv(&#34;croissant&#34;,n,&#34;croissant&#34;+str(n)+&#34;.csv&#34;)     
-        print(&#34;Liste dans l&#39;ordre croissant OK&#34;)
-        generateurListeCsv(&#34;decroissant&#34;,n,&#34;decroissant&#34;+str(n)+&#34;.csv&#34;)
-        print(&#34;Liste dans l&#39;ordre décroissant OK&#34;)
-        for i in range(nombre):
-                print(str(i+1)+&#34;e liste alléatoire OK&#34;)
-                generateurListeCsv(&#34;aleatoire&#34;,n,str(i)+&#34;aleatoire&#34;+str(n)+&#34;.csv&#34;)
-                                
-                                
-def restitueListe(nomFichier):
-        &#34;&#34;&#34;
-        **retitueListe** prend en paramètre :
-
-        - une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
-        
-        **restitueListe** renvoie :
-
-        - une liste d&#39;entier
-        &#34;&#34;&#34;
-        pass
-
-        # le repertoire contenant les fichiers à tester
-        path_csv = &#34;./csv_files2test/&#34;
-
-        fichier=open(path_csv+nomFichier,&#34;r&#34;)
-        ligne=fichier.read()
-        l=ligne.split(&#34;;&#34;)
-        n=len(l)
+    fichier=open(path_csv+nomFichier,&#34;w&#34;)
+    if tri.lower()==&#34;croissant&#34; :
         i=0
         while i&lt;n :
-                l[i]=int(l[i])
-                i=i+1   
-        fichier.close()
-        return l
-        
-        
-def mesureTempsExecutionTri(fonctionTri, liste):
-        &#34;&#34;&#34;
-        **mesureTempsExecutionTri** prend en paramètres :
-        
-        - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
-        - liste : une liste d&#39;entiers.
-        
-        **mesureTempsExecutionTri** renvoie :
-        
-        - un flottant correspondant au temps écoulé pour l&#39;exécution de la fonction.
-        &#34;&#34;&#34;
-        pass 
+            if i!= n-1 :
+                fichier.write(str(i)+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i+1
+    elif tri.lower()==&#34;decroissant&#34; :
+        i=n-1
+        while i&gt;=0 :
+            if i!=0 :
+                fichier.write(str(i)+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i-1
+    else :
+        i=0
+        while i&lt;n :
+            if i!= n-1 :
+                fichier.write(str(random.randint(0,n))+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i+1
+    fichier.close()
 
-        t1=time.time()
-        fonctionTri(liste)
-        dt=time.time()-t1
-        return dt
-        
-        
-def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
-        &#34;&#34;&#34;
-        **tempsTri** prend en paramètres :
-        
-        - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
-        - nombreTri : une entier &gt;=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
-        - nMax : une entier &gt;=1 correspondant à la taille de la plus grande liste à tester
-        - nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
+def genereToutesLesListes(nombre, n):
+    &#34;&#34;&#34;
+    **genereToutesLesListes** prend en paramètre :
 
-        **tempsTri** affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
-        &#34;&#34;&#34;
-        pass
-        
-        # On crée le dossier qui va accueillir les fichiers de rapports s&#39;il n&#39;existe pas
-        path_rapports = &#34;./rapports_de_tests/&#34;
-        if not os.path.exists(path_rapports):
-                os.mkdir(path_rapports)
+    - nombre : entier &gt;=1 correspondant au nombre de listes aléatoires à générer;
+    - n : entier correspondant au nombre dentiers dans les listes à générer
 
-        fichier=open(path_rapports+nomFichierRapportCsv,&#34;w&#34;)
-        
-        tableau=[] #liste de listes de temps pour chaque valeur de n
-        tabn=[] #liste des valeurs de n
-        
-        #mesure des temps d&#39;exécution
-        for i in range(nombreTris):
-                listeAleatoire=restitueListe(str(i)+&#34;aleatoire&#34;+str(nMax)+&#34;.csv&#34;) 
-                tab=[]     
-                n=1     
-                while n&lt;=nMax :
-                        listeATrier=copy.deepcopy(listeAleatoire[:n])
-                        global spy #espion
-                        spy=0     #espion
-                        t=mesureTempsExecutionTri(fonctionTri, listeATrier)
-                        print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)
-                        tab.append([spy, t])
-                        n=n*2
-                tableau.append(tab)
+    **genereToutesLesListes** génère des fichiers .csv contenant des listes d&#39;entiers.
+    &#34;&#34;&#34;
+    pass
+
+    generateurListeCsv(&#34;croissant&#34;,n,&#34;croissant&#34;+str(n)+&#34;.csv&#34;) 
+    print(&#34;Liste dans l&#39;ordre croissant OK&#34;)
+    generateurListeCsv(&#34;decroissant&#34;,n,&#34;decroissant&#34;+str(n)+&#34;.csv&#34;)
+    print(&#34;Liste dans l&#39;ordre décroissant OK&#34;)
+    for i in range(nombre):
+        print(str(i+1)+&#34;e liste alléatoire OK&#34;)
+        generateurListeCsv(&#34;aleatoire&#34;,n,str(i)+&#34;aleatoire&#34;+str(n)+&#34;.csv&#34;)
                 
-        #calcul des moyennes de temps d&#39;exécution et enregistrement dans le fichier csv
-        xMax=len(tableau)
-        yMax=len(tableau[0])
-        y=0
-        while y&lt;yMax :
-                t=0.0
-                x=0
-                while x&lt;xMax :
-                        t=t+tableau[x][y]
-                        x=x+1
-                t=t/float(xMax)
-                fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;\n&#34;)
-                y=y+1
+                
+def restitueListe(nomFichier):
+    &#34;&#34;&#34;
+    **retitueListe** prend en paramètre :
+
+    - une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
+    
+    **restitueListe** renvoie :
+
+    - une liste d&#39;entier
+    &#34;&#34;&#34;
+    pass
+
+    # le repertoire contenant les fichiers à tester
+    path_csv = &#34;./csv_files2test/&#34;
+
+    fichier=open(path_csv+nomFichier,&#34;r&#34;)
+    ligne=fichier.read()
+    l=ligne.split(&#34;;&#34;)
+    n=len(l)
+    i=0
+    while i&lt;n :
+        l[i]=int(l[i])
+        i=i+1   
+    fichier.close()
+    return l
+    
+    
+def mesureTempsExecutionTri(fonctionTri, liste):
+    &#34;&#34;&#34;
+    **mesureTempsExecutionTri** prend en paramètres :
+    
+    - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
+    - liste : une liste d&#39;entiers.
+    
+    **mesureTempsExecutionTri** renvoie :
+    
+    - un flottant correspondant au temps écoulé pour l&#39;exécution de la fonction.
+    &#34;&#34;&#34;
+    pass 
+
+    t1=time.time()
+    fonctionTri(liste)
+    dt=time.time()-t1
+    return dt
+    
+    
+def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
+    &#34;&#34;&#34;
+    **tempsTri** prend en paramètres :
+    
+    - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
+    - nombreTri : une entier &gt;=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
+    - nMax : une entier &gt;=1 correspondant à la taille de la plus grande liste à tester
+    - nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
+
+    **tempsTri** affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
+    &#34;&#34;&#34;
+    pass
+    
+    # On crée le dossier qui va accueillir les fichiers de rapports s&#39;il n&#39;existe pas
+    path_rapports = &#34;./rapports_de_tests/&#34;
+    if not os.path.exists(path_rapports):
+        os.mkdir(path_rapports)
+
+    fichier=open(path_rapports+nomFichierRapportCsv,&#34;w&#34;)
+    
+    tableau=[] #liste de listes de temps pour chaque valeur de n
+    tabn=[] #liste des valeurs de n
+    
+    #mesure des temps d&#39;exécution
+    for i in range(nombreTris):
+        listeAleatoire=restitueListe(str(i)+&#34;aleatoire&#34;+str(nMax)+&#34;.csv&#34;) 
+        tab=[]     
+        n=1     
+        while n&lt;=nMax :
+            listeATrier=copy.deepcopy(listeAleatoire[:n])
+            global spy #espion
+            spy=0     #espion
+            t=mesureTempsExecutionTri(fonctionTri, listeATrier)
+            spy = fonctionTri(listeATrier)[1]
+            print(&#34;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;)                                
+            print(&#34;nombre de tours de boucles : &#34;+str(spy))   #espion
+            print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)            
+            tab.append([spy, t])
+            n=n*2
+        tableau.append(tab)
         
-        fichier.close()
+    #calcul des moyennes de temps d&#39;exécution et enregistrement dans le fichier csv
+    xMax=len(tableau)
+    yMax=len(tableau[0])
+    y=0
+    while y&lt;yMax :
+        t=0.0
+        s=0  # nombre de tours de boucles
+        x=0
+        while x&lt;xMax :
+            t=t+tableau[x][y][1]
+            s=s+tableau[x][y][0]
+            x=x+1
+        t=t/float(xMax)   #calcul du temps moyen d&#39;exécution
+        s=s/float(xMax)   #calcul du nombre moyen de tours de boucles
+        s=int(s)
+        fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;;&#34;+str(s)+&#34;\n&#34;)
+        y=y+1
+
+    
+    fichier.close()
 
 # def permute(liste,i,j):
 #       &#39;&#39;&#39;
@@ -228,7 +247,7 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 #                       indiceMini=i
 #               i=i+1
 #       return (m,indiceMini)
-        
+    
 # def fctSort(liste):
 #       &#39;&#39;&#39;
 #       mise en forme de la fonction sort pour effectuer le test de mesure de temps
@@ -236,7 +255,7 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 #       liste.sort()
 #       return liste
 
-        
+    
 # def triSelection(liste):
 #       &#39;&#39;&#39;
 #       tri par selection
@@ -248,19 +267,21 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 #               permute(liste,i,m[1]+i)
 #               i=i+1
 #       return liste
-        
+    
 
 
-# if __name__==&#34;__main__&#34; :
-        
+if __name__==&#34;__main__&#34; :
+    print(spy)
+
+    
 #       #p=12 #exposant de puissance de 2 pour la taille des listes à trier
-        
+    
 #       #genereToutesLesListes(3, pow(2,p))
-        
+    
 #       # tempsTriAleatoire(fctSort, 3, pow(2,p), &#34;sortListeAleatoire.csv&#34;)
-        
+    
 #       # tempsTriAleatoire(tri_bulles_plus.tri_bulles_plus, 3, pow(2,p), &#34;bullesPlusListeAleatoire.csv&#34;)
-        
+    
 #       # tempsTriAleatoire(triSelection, 3, pow(2,p), &#34;selectionListeAleatoire.csv&#34;)</code></pre>
 </details>
 </section>
@@ -287,48 +308,48 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def generateurListeCsv(tri, n, nomFichier):
-        &#34;&#34;&#34;
-        **generateurListeCsv** prend en paramètres :
+    &#34;&#34;&#34;
+    **generateurListeCsv** prend en paramètres :
 
-        - tri : une chaine de caractère désignant si la liste est triée d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
-        - n : un entier correspondant au nombre d&#39;éléments dans la liste;
-        - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
+    - tri : une chaine de caractère désignant si la liste est triée d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
+    - n : un entier correspondant au nombre d&#39;éléments dans la liste;
+    - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
 
-        **generateurListeCsv** génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
-        &#34;&#34;&#34;
-        pass
+    **generateurListeCsv** génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
+    &#34;&#34;&#34;
+    pass
 
-        # On crée le dossier qui va accueillir les fichiers csv s&#39;il n&#39;existe pas
-        path_csv = &#34;./csv_files2test/&#34;
-        if not os.path.exists(path_csv):
-                os.mkdir(path_csv)
+    # On crée le dossier qui va accueillir les fichiers csv s&#39;il n&#39;existe pas
+    path_csv = &#34;./csv_files2test/&#34;
+    if not os.path.exists(path_csv):
+        os.mkdir(path_csv)
 
-        fichier=open(path_csv+nomFichier,&#34;w&#34;)
-        if tri.lower()==&#34;croissant&#34; :
-                i=0
-                while i&lt;n :
-                        if i!= n-1 :
-                                fichier.write(str(i)+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i+1
-        elif tri.lower()==&#34;decroissant&#34; :
-                i=n-1
-                while i&gt;=0 :
-                        if i!=0 :
-                                fichier.write(str(i)+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i-1
-        else :
-                i=0
-                while i&lt;n :
-                        if i!= n-1 :
-                                fichier.write(str(random.randint(0,n))+&#34;;&#34;)
-                        else :
-                                fichier.write(str(i))
-                        i=i+1
-        fichier.close()</code></pre>
+    fichier=open(path_csv+nomFichier,&#34;w&#34;)
+    if tri.lower()==&#34;croissant&#34; :
+        i=0
+        while i&lt;n :
+            if i!= n-1 :
+                fichier.write(str(i)+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i+1
+    elif tri.lower()==&#34;decroissant&#34; :
+        i=n-1
+        while i&gt;=0 :
+            if i!=0 :
+                fichier.write(str(i)+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i-1
+    else :
+        i=0
+        while i&lt;n :
+            if i!= n-1 :
+                fichier.write(str(random.randint(0,n))+&#34;;&#34;)
+            else :
+                fichier.write(str(i))
+            i=i+1
+    fichier.close()</code></pre>
 </details>
 </dd>
 <dt id="Tris.mesureTempsTriV3.genereToutesLesListes"><code class="name flex">
@@ -346,23 +367,23 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def genereToutesLesListes(nombre, n):
-        &#34;&#34;&#34;
-        **genereToutesLesListes** prend en paramètre :
+    &#34;&#34;&#34;
+    **genereToutesLesListes** prend en paramètre :
 
-        - nombre : entier &gt;=1 correspondant au nombre de listes aléatoires à générer;
-        - n : entier correspondant au nombre dentiers dans les listes à générer
+    - nombre : entier &gt;=1 correspondant au nombre de listes aléatoires à générer;
+    - n : entier correspondant au nombre dentiers dans les listes à générer
 
-        **genereToutesLesListes** génère des fichiers .csv contenant des listes d&#39;entiers.
-        &#34;&#34;&#34;
-        pass
+    **genereToutesLesListes** génère des fichiers .csv contenant des listes d&#39;entiers.
+    &#34;&#34;&#34;
+    pass
 
-        generateurListeCsv(&#34;croissant&#34;,n,&#34;croissant&#34;+str(n)+&#34;.csv&#34;)     
-        print(&#34;Liste dans l&#39;ordre croissant OK&#34;)
-        generateurListeCsv(&#34;decroissant&#34;,n,&#34;decroissant&#34;+str(n)+&#34;.csv&#34;)
-        print(&#34;Liste dans l&#39;ordre décroissant OK&#34;)
-        for i in range(nombre):
-                print(str(i+1)+&#34;e liste alléatoire OK&#34;)
-                generateurListeCsv(&#34;aleatoire&#34;,n,str(i)+&#34;aleatoire&#34;+str(n)+&#34;.csv&#34;)</code></pre>
+    generateurListeCsv(&#34;croissant&#34;,n,&#34;croissant&#34;+str(n)+&#34;.csv&#34;) 
+    print(&#34;Liste dans l&#39;ordre croissant OK&#34;)
+    generateurListeCsv(&#34;decroissant&#34;,n,&#34;decroissant&#34;+str(n)+&#34;.csv&#34;)
+    print(&#34;Liste dans l&#39;ordre décroissant OK&#34;)
+    for i in range(nombre):
+        print(str(i+1)+&#34;e liste alléatoire OK&#34;)
+        generateurListeCsv(&#34;aleatoire&#34;,n,str(i)+&#34;aleatoire&#34;+str(n)+&#34;.csv&#34;)</code></pre>
 </details>
 </dd>
 <dt id="Tris.mesureTempsTriV3.mesureTempsExecutionTri"><code class="name flex">
@@ -383,22 +404,22 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def mesureTempsExecutionTri(fonctionTri, liste):
-        &#34;&#34;&#34;
-        **mesureTempsExecutionTri** prend en paramètres :
-        
-        - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
-        - liste : une liste d&#39;entiers.
-        
-        **mesureTempsExecutionTri** renvoie :
-        
-        - un flottant correspondant au temps écoulé pour l&#39;exécution de la fonction.
-        &#34;&#34;&#34;
-        pass 
+    &#34;&#34;&#34;
+    **mesureTempsExecutionTri** prend en paramètres :
+    
+    - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
+    - liste : une liste d&#39;entiers.
+    
+    **mesureTempsExecutionTri** renvoie :
+    
+    - un flottant correspondant au temps écoulé pour l&#39;exécution de la fonction.
+    &#34;&#34;&#34;
+    pass 
 
-        t1=time.time()
-        fonctionTri(liste)
-        dt=time.time()-t1
-        return dt</code></pre>
+    t1=time.time()
+    fonctionTri(liste)
+    dt=time.time()-t1
+    return dt</code></pre>
 </details>
 </dd>
 <dt id="Tris.mesureTempsTriV3.restitueListe"><code class="name flex">
@@ -418,30 +439,30 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def restitueListe(nomFichier):
-        &#34;&#34;&#34;
-        **retitueListe** prend en paramètre :
+    &#34;&#34;&#34;
+    **retitueListe** prend en paramètre :
 
-        - une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
-        
-        **restitueListe** renvoie :
+    - une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
+    
+    **restitueListe** renvoie :
 
-        - une liste d&#39;entier
-        &#34;&#34;&#34;
-        pass
+    - une liste d&#39;entier
+    &#34;&#34;&#34;
+    pass
 
-        # le repertoire contenant les fichiers à tester
-        path_csv = &#34;./csv_files2test/&#34;
+    # le repertoire contenant les fichiers à tester
+    path_csv = &#34;./csv_files2test/&#34;
 
-        fichier=open(path_csv+nomFichier,&#34;r&#34;)
-        ligne=fichier.read()
-        l=ligne.split(&#34;;&#34;)
-        n=len(l)
-        i=0
-        while i&lt;n :
-                l[i]=int(l[i])
-                i=i+1   
-        fichier.close()
-        return l</code></pre>
+    fichier=open(path_csv+nomFichier,&#34;r&#34;)
+    ligne=fichier.read()
+    l=ligne.split(&#34;;&#34;)
+    n=len(l)
+    i=0
+    while i&lt;n :
+        l[i]=int(l[i])
+        i=i+1   
+    fichier.close()
+    return l</code></pre>
 </details>
 </dd>
 <dt id="Tris.mesureTempsTriV3.tempsTriAleatoire"><code class="name flex">
@@ -461,58 +482,66 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
-        &#34;&#34;&#34;
-        **tempsTri** prend en paramètres :
-        
-        - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
-        - nombreTri : une entier &gt;=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
-        - nMax : une entier &gt;=1 correspondant à la taille de la plus grande liste à tester
-        - nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
+    &#34;&#34;&#34;
+    **tempsTri** prend en paramètres :
+    
+    - fonctionTri : une fonction de tri prenant en paramètre une liste d&#39;entiers;
+    - nombreTri : une entier &gt;=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
+    - nMax : une entier &gt;=1 correspondant à la taille de la plus grande liste à tester
+    - nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
 
-        **tempsTri** affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
-        &#34;&#34;&#34;
-        pass
-        
-        # On crée le dossier qui va accueillir les fichiers de rapports s&#39;il n&#39;existe pas
-        path_rapports = &#34;./rapports_de_tests/&#34;
-        if not os.path.exists(path_rapports):
-                os.mkdir(path_rapports)
+    **tempsTri** affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
+    &#34;&#34;&#34;
+    pass
+    
+    # On crée le dossier qui va accueillir les fichiers de rapports s&#39;il n&#39;existe pas
+    path_rapports = &#34;./rapports_de_tests/&#34;
+    if not os.path.exists(path_rapports):
+        os.mkdir(path_rapports)
 
-        fichier=open(path_rapports+nomFichierRapportCsv,&#34;w&#34;)
+    fichier=open(path_rapports+nomFichierRapportCsv,&#34;w&#34;)
+    
+    tableau=[] #liste de listes de temps pour chaque valeur de n
+    tabn=[] #liste des valeurs de n
+    
+    #mesure des temps d&#39;exécution
+    for i in range(nombreTris):
+        listeAleatoire=restitueListe(str(i)+&#34;aleatoire&#34;+str(nMax)+&#34;.csv&#34;) 
+        tab=[]     
+        n=1     
+        while n&lt;=nMax :
+            listeATrier=copy.deepcopy(listeAleatoire[:n])
+            global spy #espion
+            spy=0     #espion
+            t=mesureTempsExecutionTri(fonctionTri, listeATrier)
+            spy = fonctionTri(listeATrier)[1]
+            print(&#34;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;)                                
+            print(&#34;nombre de tours de boucles : &#34;+str(spy))   #espion
+            print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)            
+            tab.append([spy, t])
+            n=n*2
+        tableau.append(tab)
         
-        tableau=[] #liste de listes de temps pour chaque valeur de n
-        tabn=[] #liste des valeurs de n
-        
-        #mesure des temps d&#39;exécution
-        for i in range(nombreTris):
-                listeAleatoire=restitueListe(str(i)+&#34;aleatoire&#34;+str(nMax)+&#34;.csv&#34;) 
-                tab=[]     
-                n=1     
-                while n&lt;=nMax :
-                        listeATrier=copy.deepcopy(listeAleatoire[:n])
-                        global spy #espion
-                        spy=0     #espion
-                        t=mesureTempsExecutionTri(fonctionTri, listeATrier)
-                        print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)
-                        tab.append([spy, t])
-                        n=n*2
-                tableau.append(tab)
-                
-        #calcul des moyennes de temps d&#39;exécution et enregistrement dans le fichier csv
-        xMax=len(tableau)
-        yMax=len(tableau[0])
-        y=0
-        while y&lt;yMax :
-                t=0.0
-                x=0
-                while x&lt;xMax :
-                        t=t+tableau[x][y]
-                        x=x+1
-                t=t/float(xMax)
-                fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;\n&#34;)
-                y=y+1
-        
-        fichier.close()</code></pre>
+    #calcul des moyennes de temps d&#39;exécution et enregistrement dans le fichier csv
+    xMax=len(tableau)
+    yMax=len(tableau[0])
+    y=0
+    while y&lt;yMax :
+        t=0.0
+        s=0  # nombre de tours de boucles
+        x=0
+        while x&lt;xMax :
+            t=t+tableau[x][y][1]
+            s=s+tableau[x][y][0]
+            x=x+1
+        t=t/float(xMax)   #calcul du temps moyen d&#39;exécution
+        s=s/float(xMax)   #calcul du nombre moyen de tours de boucles
+        s=int(s)
+        fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;;&#34;+str(s)+&#34;\n&#34;)
+        y=y+1
+
+    
+    fichier.close()</code></pre>
 </details>
 </dd>
 </dl>
