@@ -15,13 +15,13 @@ import os
 
 def generateurListeCsv(tri, n, nomFichier):
 	"""
-	generateurListeCsv prend en paramètres :
+	**generateurListeCsv** prend en paramètres :
 
-		- tri : une chaine de caractère désignant si la liste est triée  d'une certaine manière ou non : prend les valeurs "CROISSANT", "DECROISSANT" ou "ALEATOIRE";
-		- n : un entier correspondant au nombre d'éléments dans la liste;
-		- nomfichier : une chaine de caractères correspondant au nom de fichier en ".csv" ( ex : "toto.csv" )
+	- tri : une chaine de caractère désignant si la liste est triée d'une certaine manière ou non : prend les valeurs "CROISSANT", "DECROISSANT" ou "ALEATOIRE";
+	- n : un entier correspondant au nombre d'éléments dans la liste;
+	- nomfichier : une chaine de caractères correspondant au nom de fichier en ".csv" ( ex : "toto.csv" )
 
-	generateurListeCsv génère un fichier csv contenant une liste d'entier triée croissante, décroissante ou non triée.
+	**generateurListeCsv** génère un fichier csv contenant une liste d'entier triée croissante, décroissante ou non triée.
 	"""
 	pass
 
@@ -58,12 +58,16 @@ def generateurListeCsv(tri, n, nomFichier):
 	fichier.close()
 
 def genereToutesLesListes(nombre, n):
-	'''
-	genereToutesLesListes prend en paramètre :
-		- nombre : entier >=1 correspondant au nombre de listes aléatoires à générer;
-		- n : entier correspondant au nombre dentiers dans les listes à générer
-	genereToutesLesListes génère des fichiers .csv contenant des listes d'entiers.
-	'''
+	"""
+	**genereToutesLesListes** prend en paramètre :
+
+	- nombre : entier >=1 correspondant au nombre de listes aléatoires à générer;
+	- n : entier correspondant au nombre dentiers dans les listes à générer
+
+	**genereToutesLesListes** génère des fichiers .csv contenant des listes d'entiers.
+	"""
+	pass
+
 	generateurListeCsv("croissant",n,"croissant"+str(n)+".csv")	
 	print("Liste dans l'ordre croissant OK")
 	generateurListeCsv("decroissant",n,"decroissant"+str(n)+".csv")
@@ -74,12 +78,17 @@ def genereToutesLesListes(nombre, n):
 				
 				
 def restitueListe(nomFichier):
-	'''
-	retitueListe prend en paramètre :
-		- une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
-	restitueListe renvoie :
-		- une liste d'entier
-	'''
+	"""
+	**retitueListe** prend en paramètre :
+
+	- une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
+	
+	**restitueListe** renvoie :
+
+	- une liste d'entier
+	"""
+	pass
+
 	# le repertoire contenant les fichiers à tester
 	path_csv = "./csv_files2test/"
 
@@ -96,13 +105,18 @@ def restitueListe(nomFichier):
 	
 	
 def mesureTempsExecutionTri(fonctionTri, liste):
-	'''
-	mesureTempsExecutionTri prend en paramètres :
-		- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
-		- liste : une liste d'entiers.
-	mesureTempsExecutionTri renvoie :
-		- un flottant correspondant au temps écoulé pour l'exécution de la fonction.
-	'''
+	"""
+	**mesureTempsExecutionTri** prend en paramètres :
+	
+	- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
+	- liste : une liste d'entiers.
+	
+	**mesureTempsExecutionTri** renvoie :
+	
+	- un flottant correspondant au temps écoulé pour l'exécution de la fonction.
+	"""
+	pass 
+
 	t1=time.time()
 	fonctionTri(liste)
 	dt=time.time()-t1
@@ -110,14 +124,17 @@ def mesureTempsExecutionTri(fonctionTri, liste):
 	
 	
 def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
-	'''
-	tempsTri prend en paramètres :
-		- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
-		- nombreTri : une entier >=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
-		- nMax : une entier >=1 correspondant à la taille de la plus grande liste à tester
-		- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
-	tempsTri affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
-	'''
+	"""
+	**tempsTri** prend en paramètres :
+	
+	- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
+	- nombreTri : une entier >=1 correspondant aux nombre de tris à effectuer dans le but de faire une moyenne;
+	- nMax : une entier >=1 correspondant à la taille de la plus grande liste à tester
+	- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat
+
+	**tempsTri** affiche, et génère un fichier csv donnant le temps mis par fonctionTri pour effectuer sont tri en fonction de la longueur des listes testées
+	"""
+	pass
 	
 	# On crée le dossier qui va accueillir les fichiers de rapports s'il n'existe pas
 	path_rapports = "./rapports_de_tests/"
