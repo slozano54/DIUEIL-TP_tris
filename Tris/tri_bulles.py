@@ -10,9 +10,11 @@ pass
 
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
-    import utils as ui    
+    import utils as ui
+    from global_spy import compteTourBoucle    
 else:
     import Tris.utils as ui   
+    from Tris.global_spy import compteTourBoucle
 
     
 def tri_bulles(tab:list)->list:
@@ -46,11 +48,12 @@ def tri_bulles(tab:list)->list:
             # Les éléments n-i à n sont triés
             #print("i=",i," : ",tab)
             assert ui.isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
-            assert len(tab)==n,"Le nombre d'éléments du tableau a changé"            
+            assert len(tab)==n,"Le nombre d'éléments du tableau a changé"
+            compteTourBoucle()                                           #espion                        
             for j in range(0, n-i-1):
                 # Si l'élément trouvé est plus grand que le suivant on échange les deux
-                if tab[j] > tab[j+1] :
-                    #tab[j], tab[j+1] = tab[j+1], tab[j]
+                compteTourBoucle()                                           #espion
+                if tab[j] > tab[j+1] :                    
                     ui.permuteTab_i_j(tab,j,j+1)
         
     #postconditions

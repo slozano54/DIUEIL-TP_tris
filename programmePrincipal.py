@@ -18,7 +18,11 @@ from Tris.tri_selection import tri_selection
 from Tris.tri_rapide_non_recursif import tri_rapide_non_recursif
 # mesures de Temps de Fabien
 from Tris.mesureTempsTriV3 import *
+# spy bot de Fabien
+from Tris.global_spy import *
 
+# variable globale espion
+spy = 0
 
 # Script principal
 def main():
@@ -87,7 +91,12 @@ def main():
     print("On teste la fonction sort  ")    
     #tempsTriAleatoire(fctSort, 3, pow(2,p), "resultats_sortListeAleatoire.csv")
     print("=============================================================================")    
-    print("On teste la fonction tri_bulle_plus  ")
+    print("On teste la fonction tri_bulles  ")
+    print("global spy : ",spy)
+    tempsTriAleatoire(tri_bulles, 3, pow(2,p), "resultats_bullesListeAleatoire.csv")
+    print("global spy : ",spy)
+    print("=============================================================================")    
+    print("On teste la fonction tri_bulles_plus  ")
     #tempsTriAleatoire(tri_bulles_plus, 3, pow(2,p), "resultats_bullesPlusListeAleatoire.csv")
     print("=============================================================================")    
     print("On teste la fonction tri_selection  ")
