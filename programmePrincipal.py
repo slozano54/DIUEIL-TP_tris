@@ -76,16 +76,16 @@ def main():
     print("=============================================================================")    
     print("Tests avec mesureTempsTriV3 de Fabien et Moi en cours ...  ")
     print("")
-    p=2 #exposant de puissance de 2 pour la taille des listes à trier
+    p=12 #exposant de puissance de 2 pour la taille des listes à trier
 
     print("=============================================================================")    
     print("On génère toutes les listes pour les tests si elles n'existent pas déjà ...")    
     print("") 
-    #if (not os.path.exists("./csv_files2test")):
-    #    genereToutesLesListes(3, pow(2,p))
-    # elif (len(os.listdir("./csv_files2test")) == 0):
-    #     genereToutesLesListes(3, pow(2,p))            
-    genereToutesLesListes(3, pow(2,p))
+    if (not os.path.exists("./csv_files2test")):
+       genereToutesLesListes(3, pow(2,p))
+    elif (len(os.listdir("./csv_files2test")) == 0):
+        genereToutesLesListes(3, pow(2,p))            
+    #genereToutesLesListes(3, pow(2,p))
     print("")
     print("=============================================================================")    
     print("On teste la fonction sort  ")    
