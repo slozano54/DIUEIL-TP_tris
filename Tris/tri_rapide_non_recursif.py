@@ -16,9 +16,11 @@ pass
 
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
-    import utils as ui    
+    import utils as ui
+    from config import *
 else:
-    import Tris.utils as ui    
+    import Tris.utils as ui   
+    from Tris.config import *     
 
 
 def isGreater(x:int,y:int)->bool:
@@ -49,20 +51,26 @@ def partition(tab:list, start:int, end:int)->int:
     """
     pass
 
+    global spy
+    spy = 0    
     while start < end:
+        spy += 1 #espion
         # au debut de cette boucle, on partitionne avec start
         while start < end:
+            spy += 1 #espion            
             if isGreater(tab[start], tab[end]):
                 (tab[start], tab[end]) = (tab[end], tab[start])
                 break
             end = end - 1
         # au debut de cette boucle, on partitionne avec end
-        while start < end:            
+        while start < end:
+            spy += 1 #espion                        
             if isGreater(tab[start], tab[end]):                
                 (tab[start], tab[end]) = (tab[end], tab[start])
                 break
             start = start + 1
-    return start
+    
+    return [start,spy]
  
 def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     """
@@ -79,6 +87,10 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     """
     pass
 
+    global spy
+    spy = 0
+    sum_spy = 0
+
     # initialiser
     if start is None: start = 0
     if end is None: end = len(tab)
@@ -89,8 +101,9 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     # Tant qu'ils sont différents on change l'indice du pivot
     while len(indiceStack)>=2:
         end = indiceStack.pop()
-        start = indiceStack.pop()        
-        i_pivot = partition(tab, start, end-1)
+        start = indiceStack.pop()                        
+        i_pivot = partition(tab, start, end-1)[0]                
+        sum_spy += spy
         
         if start < i_pivot:
             indiceStack.append(start)
@@ -99,7 +112,7 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
         if end > (i_pivot+1):
             indiceStack.append(i_pivot+1)
             indiceStack.append(end)
-    return tab    
+    return [tab,sum_spy]    
 
 
 if __name__=="__main__" :    

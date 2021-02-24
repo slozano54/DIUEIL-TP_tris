@@ -11,9 +11,11 @@ pass
 
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
-    import utils as ui    
+    import utils as ui
+    from config import *
 else:
-    import Tris.utils as ui     
+    import Tris.utils as ui   
+    from Tris.config import *    
     
 def tri_selection(tab:list)->list:
     """
@@ -30,18 +32,21 @@ def tri_selection(tab:list)->list:
 
     # Taille du tableau
     n = len(tab)
+    global spy
+    spy = 0
 
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
         # intialiser le compteur de boucle
         i=0
         while (i<=n-2):
-            
+            spy += 1 #espion
             # indice du plus petit élement restant
             i_min = i
             # initialiser le compteur de boucle pour les éléments du tableau restant
             j=i+1
             while (j<=n-1):
+                spy += 1 #espion
                 # si on trouve un plus petit élément on modifie l'indice i_min
                 if tab[j] < tab[i_min]:
                     i_min = j
@@ -53,8 +58,8 @@ def tri_selection(tab:list)->list:
             # incrémenter le compteur boucle principale
             i+=1
     
-    # on retourne le tableau trié
-    return tab    
+    # on retourne le tableau trié et l'espion
+    return [tab,spy]    
 
 
 if __name__=="__main__" :

@@ -11,10 +11,10 @@ pass
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
     import utils as ui
-    from global_spy import compteTourBoucle    
+    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.global_spy import compteTourBoucle
+    from Tris.config import *
 
     
 def tri_bulles(tab:list)->list:
@@ -39,7 +39,9 @@ def tri_bulles(tab:list)->list:
     #preconditions
     assert isinstance(tab,list),"Le parametre n'est pas une liste"
     assert n>0,"La liste est vide"
-
+    # espion
+    global spy
+    spy = 0    
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
         # Traverser tous les éléments du tableau
@@ -49,10 +51,12 @@ def tri_bulles(tab:list)->list:
             #print("i=",i," : ",tab)
             assert ui.isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
             assert len(tab)==n,"Le nombre d'éléments du tableau a changé"
-            compteTourBoucle()                                           #espion                        
+            #compteTourBoucle()                                           #espion                                    
+            spy += 1 # variable globale espion            
             for j in range(0, n-i-1):
                 # Si l'élément trouvé est plus grand que le suivant on échange les deux
-                compteTourBoucle()                                           #espion
+                #compteTourBoucle()                                           #espion                                
+                spy += 1 # variable globale espion                
                 if tab[j] > tab[j+1] :                    
                     ui.permuteTab_i_j(tab,j,j+1)
         
@@ -61,9 +65,12 @@ def tri_bulles(tab:list)->list:
     assert ui.isSorted(tab),"Le tableau n'est pas trié"
     # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
-    return tab
+    #return tab    
+    return [tab,spy]
 
 if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_bulles(tab_a_trier))
+    print(spy)
+    print(tri_bulles(tab_a_trier))    
+    print(spy)
