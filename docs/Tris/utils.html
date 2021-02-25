@@ -36,7 +36,8 @@ pass
 
 def isSorted(tab:list)-&gt;bool:
     &#34;&#34;&#34;Fonction booléenne qui retourne True si le tableau passé en paramètre est trié&#34;&#34;&#34;
-    #Le booléen de sorite
+    global spy
+    #Le booléen de sortie
     isTrue = True    
     #La longueur du tableau
     n=len(tab)
@@ -88,7 +89,9 @@ if __name__==&#34;__main__&#34; :
     #print(isSorted(tab1))
     print(isSorted(tab2))
     print(tab2)
-    print(permuteTab_i_j(tab2,2,3))    </code></pre>
+    print(permuteTab_i_j(tab2,2,3)) 
+    print(tab2)
+    print(isSorted(tab2))   </code></pre>
 </details>
 </section>
 <section>
@@ -109,7 +112,8 @@ if __name__==&#34;__main__&#34; :
 </summary>
 <pre><code class="python">def isSorted(tab:list)-&gt;bool:
     &#34;&#34;&#34;Fonction booléenne qui retourne True si le tableau passé en paramètre est trié&#34;&#34;&#34;
-    #Le booléen de sorite
+    global spy
+    #Le booléen de sortie
     isTrue = True    
     #La longueur du tableau
     n=len(tab)
