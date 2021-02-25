@@ -7,7 +7,8 @@ pass
 
 def isSorted(tab:list)->bool:
     """Fonction booléenne qui retourne True si le tableau passé en paramètre est trié"""
-    #Le booléen de sorite
+    global spy
+    #Le booléen de sortie
     isTrue = True    
     #La longueur du tableau
     n=len(tab)
@@ -59,4 +60,6 @@ if __name__=="__main__" :
     #print(isSorted(tab1))
     print(isSorted(tab2))
     print(tab2)
-    print(permuteTab_i_j(tab2,2,3))    
+    print(permuteTab_i_j(tab2,2,3)) 
+    print(tab2)
+    print(isSorted(tab2))   

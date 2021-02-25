@@ -166,8 +166,8 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
             listeATrier=copy.deepcopy(listeAleatoire[:n])
             global spy #espion
             spy=0     #espion
-            t=mesureTempsExecutionTri(fonctionTri, listeATrier)
-            spy = fonctionTri(listeATrier)[1]
+            t=mesureTempsExecutionTri(fonctionTri, listeATrier)            
+            spy = fonctionTri(listeATrier)[1]            
             print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")			            
             print("nombre de tours de boucles : "+str(spy))   #espion
             print("temps pour trier "+str(n)+" entiers d'une liste aléatoire : "+str(t)+" s")            
