@@ -21,7 +21,7 @@ Pour générer la documentation il faut installer le paquet python [pdoc3](https
 ```bash
 pip3 install pdoc
 ```
-Cloner le dépot ou télécharger l'[archive zip](#).
+Cloner [le dépot](https://github.com/slozano54/DIUEIL-TP_tris) ou télécharger l'[archive zip](http://diueil.mathslozano.fr/bloc2/diueil-TP_tris.zip).
 
 À la racine du projet, lancer le script python **programmePrincipal**
 
