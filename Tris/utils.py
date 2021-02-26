@@ -52,8 +52,6 @@ def permuteTab_i_j(tab:list,i:int,j:int)->list:
 
     return tab
   
-    
-
 if __name__=="__main__" :
     tab1=[5,4,3,2,1]
     tab2=[1,2,3,4,5]    

@@ -9,19 +9,20 @@
 """
 pass
 
+#pour copier une variable
+import copy 
+
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
     import utils as ui
-    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.config import *    
     
-def tri_selection(tab:list)->list:
+def tri_selection(tab_source:list)->list:
     """
     Fonction de tri par selection
 
-    **Paramètres** tab : Une liste.        
+    **Paramètres** tab_source : Une liste.        
     **Sorties** le tableau trié    
     **Exemples**
     >>> my_tab_to_sort = [5,1,2,4,3]
@@ -30,9 +31,13 @@ def tri_selection(tab:list)->list:
     """
     pass
 
+    # On va travailler sur une copie du tableau de manière à pouvoir faire plusieurs appels
+    # de la fonction sans modifier le tableau d'origine  
+    tab = copy.deepcopy(tab_source)
+
     # Taille du tableau
     n = len(tab)
-    global spy
+    # Pour compter les actions atomiques
     spy = 0
 
     # On ne trie le tableau que s'il a plus qu'un seul élément

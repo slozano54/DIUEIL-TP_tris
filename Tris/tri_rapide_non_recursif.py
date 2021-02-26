@@ -14,14 +14,14 @@
 """
 pass
 
+#pour copier une variable
+import copy 
+
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
     import utils as ui
-    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.config import *     
-
 
 def isGreater(x:int,y:int)->bool:
     """ Fonction booléenne de comparaison"""
@@ -51,7 +51,7 @@ def partition(tab:list, start:int, end:int)->int:
     """
     pass
 
-    global spy
+    # Pour compter les actions atomiques
     spy = 0    
     while start < end:
         spy += 1 #espion
@@ -59,26 +59,28 @@ def partition(tab:list, start:int, end:int)->int:
         while start < end:
             spy += 1 #espion            
             if isGreater(tab[start], tab[end]):
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1                
+                ui.permuteTab_i_j(tab,end,start)
                 break
             end = end - 1
         # au debut de cette boucle, on partitionne avec end
         while start < end:
             spy += 1 #espion                        
             if isGreater(tab[start], tab[end]):                
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1
+                ui.permuteTab_i_j(tab,start,end)
                 break
             start = start + 1
     
     return [start,spy]
  
-def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
+def tri_rapide_non_recursif(tab_source:list, start=None, end=None)->list:
     """
     Tri rapide non récursif.
 
     **Paramètres**
 
-    * tab: une liste
+    * tab_source: une liste
     * start : un entier par défaut à None
     * end : un entier par défaut à None
 
@@ -87,9 +89,11 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     """
     pass
 
-    global spy
+    # On travaille sur une copie du tableau
+    tab = copy.deepcopy(tab_source)
+    
+    # Pour compter les actions atomiques
     spy = 0
-    sum_spy = 0
 
     # initialiser
     if start is None: start = 0
@@ -100,11 +104,16 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
     
     # Tant qu'ils sont différents on change l'indice du pivot
     while len(indiceStack)>=2:
+        # On récupère les indices
         end = indiceStack.pop()
-        start = indiceStack.pop()                        
+        start = indiceStack.pop()
+        # On calcule le rang du pivot
         i_pivot = partition(tab, start, end-1)[0]                
-        sum_spy += spy
+        # On récupère le nombre d'actions atomiques
+        spy += partition(tab, start, end-1)[1] #espion
         
+        # On réaffecte le tableau indiceStack=[start,end] avec les nouveaux indices
+        spy += 1 # espion
         if start < i_pivot:
             indiceStack.append(start)
             indiceStack.append(i_pivot)
@@ -112,10 +121,12 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)->list:
         if end > (i_pivot+1):
             indiceStack.append(i_pivot+1)
             indiceStack.append(end)
-    return [tab,sum_spy]    
+
+    return [tab,spy]    
 
 
 if __name__=="__main__" :    
     tab_a_trier = [5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_rapide_non_recursif(tab_a_trier))    
+    print(tri_rapide_non_recursif(tab_a_trier))
+    print(ui.isSorted(tab_a_trier))    
