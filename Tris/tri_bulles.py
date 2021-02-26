@@ -8,20 +8,20 @@
 """
 pass
 
+#pour copier une variable
+import copy 
+
 # On fait les imports nécessaires selon le contexte
 if __name__ == "__main__":    
     import utils as ui
-    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.config import *
-
     
-def tri_bulles(tab:list)->list:
+def tri_bulles(tab_source:list)->list:
     """
     Fonction de tri à bulles
 
-    **Paramètres** tab : Une liste.<br> 
+    **Paramètres** tab_source : Une liste.<br> 
     **Sorties** le tableau trié<br> 
     **Préconditions** Le tableau n'est pas vide<br>
     **Invariant** les éléments n-i à n sont triés<br>
@@ -33,14 +33,18 @@ def tri_bulles(tab:list)->list:
     """
     pass
 
+    # On va travailler sur une copie du tableau de manière à pouvoir faire plusieurs appels
+    # de la fonction sans modifier le tableau d'origine  
+    tab = copy.deepcopy(tab_source)
+
     # On récupère la taille du tableau dans une variable
     n = len(tab)
 
     #preconditions
     assert isinstance(tab,list),"Le parametre n'est pas une liste"
     assert n>0,"La liste est vide"
-    # espion
-    global spy
+    
+    # Pour compter les actions atomiques
     spy = 0    
     # On ne trie le tableau que s'il a plus qu'un seul élément
     if n>=2 :
@@ -48,15 +52,12 @@ def tri_bulles(tab:list)->list:
         for i in range(n):
             # INVARIANT :             
             # Les éléments n-i à n sont triés
-            #print("i=",i," : ",tab)
             assert ui.isSorted(tab[n-i:n]),"Le tableau n'est pas trié de n-i à n"
             assert len(tab)==n,"Le nombre d'éléments du tableau a changé"
-            #compteTourBoucle()                                           #espion                                    
-            spy += 1 # variable globale espion            
+            spy += 1 # espion            
             for j in range(0, n-i-1):
                 # Si l'élément trouvé est plus grand que le suivant on échange les deux
-                #compteTourBoucle()                                           #espion                                
-                spy += 1 # variable globale espion                
+                spy += 1 # espion                
                 if tab[j] > tab[j+1] :                    
                     ui.permuteTab_i_j(tab,j,j+1)
         
@@ -65,12 +66,9 @@ def tri_bulles(tab:list)->list:
     assert ui.isSorted(tab),"Le tableau n'est pas trié"
     # il faudrait vérifier que les éléments sont restés ceux de départ peut être avec une fonction à part ?        
 
-    #return tab    
     return [tab,spy]
 
 if __name__=="__main__" :
-    tab_a_trier=[5,4,3,2,1]
+    tab_a_trier=[6,5,4,3,2,1]
     print(tab_a_trier)
-    print(spy)
     print(tri_bulles(tab_a_trier))    
-    print(spy)

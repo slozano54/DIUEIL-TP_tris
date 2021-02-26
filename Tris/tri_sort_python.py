@@ -5,17 +5,14 @@
 """
 pass
 
-# On fait les imports nécessaires selon le contexte
-if __name__ == "__main__":        
-    from config import *
-else:    
-    from Tris.config import *
+#pour copier une variable
+import copy 
 
-def fctSort(liste:list)->list:
+def fctSort(tab_source:list)->list:
     """
     Mise en forme de la fonction sort pour effectuer le test de mesure de temps.
         
-    **Paramètres** liste : une liste	
+    **Paramètres** tab_source : une liste	
     **Sorties** la liste triée	
     **Exemples**	
     >>> my_tab_to_sort = [5,1,2,4,3]
@@ -24,12 +21,16 @@ def fctSort(liste:list)->list:
     """
     pass
 
-    global spy
+    # On va travailler sur une copie du tableau de manière à pouvoir faire plusieurs appels
+    # de la fonction sans modifier le tableau d'origine  
+    tab = copy.deepcopy(tab_source)
+
+    # Pour compter les actions atomiques
     spy = 0
-    liste.sort()    
-    spy +=1
+    tab.sort()    
+    spy +=1 # espion
     
-    return [liste,spy]
+    return [tab,spy]
 
 if __name__=="__main__" :
     tab_a_trier=[5,4,3,2,1]
