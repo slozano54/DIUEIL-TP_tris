@@ -52,14 +52,14 @@
 &#34;&#34;&#34;
 pass
 
+#pour copier une variable
+import copy 
+
 # On fait les imports nécessaires selon le contexte
 if __name__ == &#34;__main__&#34;:    
     import utils as ui
-    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.config import *     
-
 
 def isGreater(x:int,y:int)-&gt;bool:
     &#34;&#34;&#34; Fonction booléenne de comparaison&#34;&#34;&#34;
@@ -89,7 +89,7 @@ def partition(tab:list, start:int, end:int)-&gt;int:
     &#34;&#34;&#34;
     pass
 
-    global spy
+    # Pour compter les actions atomiques
     spy = 0    
     while start &lt; end:
         spy += 1 #espion
@@ -97,26 +97,28 @@ def partition(tab:list, start:int, end:int)-&gt;int:
         while start &lt; end:
             spy += 1 #espion            
             if isGreater(tab[start], tab[end]):
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1                
+                ui.permuteTab_i_j(tab,end,start)
                 break
             end = end - 1
         # au debut de cette boucle, on partitionne avec end
         while start &lt; end:
             spy += 1 #espion                        
             if isGreater(tab[start], tab[end]):                
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1
+                ui.permuteTab_i_j(tab,start,end)
                 break
             start = start + 1
     
     return [start,spy]
  
-def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
+def tri_rapide_non_recursif(tab_source:list, start=None, end=None)-&gt;list:
     &#34;&#34;&#34;
     Tri rapide non récursif.
 
     **Paramètres**
 
-    * tab: une liste
+    * tab_source: une liste
     * start : un entier par défaut à None
     * end : un entier par défaut à None
 
@@ -125,9 +127,11 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
     &#34;&#34;&#34;
     pass
 
-    global spy
+    # On travaille sur une copie du tableau
+    tab = copy.deepcopy(tab_source)
+    
+    # Pour compter les actions atomiques
     spy = 0
-    sum_spy = 0
 
     # initialiser
     if start is None: start = 0
@@ -138,11 +142,16 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
     
     # Tant qu&#39;ils sont différents on change l&#39;indice du pivot
     while len(indiceStack)&gt;=2:
+        # On récupère les indices
         end = indiceStack.pop()
-        start = indiceStack.pop()                        
+        start = indiceStack.pop()
+        # On calcule le rang du pivot
         i_pivot = partition(tab, start, end-1)[0]                
-        sum_spy += spy
+        # On récupère le nombre d&#39;actions atomiques
+        spy += partition(tab, start, end-1)[1] #espion
         
+        # On réaffecte le tableau indiceStack=[start,end] avec les nouveaux indices
+        spy += 1 # espion
         if start &lt; i_pivot:
             indiceStack.append(start)
             indiceStack.append(i_pivot)
@@ -150,13 +159,15 @@ def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
         if end &gt; (i_pivot+1):
             indiceStack.append(i_pivot+1)
             indiceStack.append(end)
-    return [tab,sum_spy]    
+
+    return [tab,spy]    
 
 
 if __name__==&#34;__main__&#34; :    
     tab_a_trier = [5,4,3,2,1]
     print(tab_a_trier)
-    print(tri_rapide_non_recursif(tab_a_trier))    </code></pre>
+    print(tri_rapide_non_recursif(tab_a_trier))
+    print(ui.isSorted(tab_a_trier))    </code></pre>
 </details>
 </section>
 <section>
@@ -226,7 +237,7 @@ if __name__==&#34;__main__&#34; :
     &#34;&#34;&#34;
     pass
 
-    global spy
+    # Pour compter les actions atomiques
     spy = 0    
     while start &lt; end:
         spy += 1 #espion
@@ -234,14 +245,16 @@ if __name__==&#34;__main__&#34; :
         while start &lt; end:
             spy += 1 #espion            
             if isGreater(tab[start], tab[end]):
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1                
+                ui.permuteTab_i_j(tab,end,start)
                 break
             end = end - 1
         # au debut de cette boucle, on partitionne avec end
         while start &lt; end:
             spy += 1 #espion                        
             if isGreater(tab[start], tab[end]):                
-                (tab[start], tab[end]) = (tab[end], tab[start])
+                spy +=1
+                ui.permuteTab_i_j(tab,start,end)
                 break
             start = start + 1
     
@@ -249,13 +262,13 @@ if __name__==&#34;__main__&#34; :
 </details>
 </dd>
 <dt id="Tris.tri_rapide_non_recursif.tri_rapide_non_recursif"><code class="name flex">
-<span>def <span class="ident">tri_rapide_non_recursif</span></span>(<span>tab: list, start=None, end=None) ‑> list</span>
+<span>def <span class="ident">tri_rapide_non_recursif</span></span>(<span>tab_source: list, start=None, end=None) ‑> list</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Tri rapide non récursif.</p>
 <p><strong>Paramètres</strong></p>
 <ul>
-<li>tab: une liste</li>
+<li>tab_source: une liste</li>
 <li>start : un entier par défaut à None</li>
 <li>end : un entier par défaut à None</li>
 </ul>
@@ -264,13 +277,13 @@ if __name__==&#34;__main__&#34; :
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def tri_rapide_non_recursif(tab:list, start=None, end=None)-&gt;list:
+<pre><code class="python">def tri_rapide_non_recursif(tab_source:list, start=None, end=None)-&gt;list:
     &#34;&#34;&#34;
     Tri rapide non récursif.
 
     **Paramètres**
 
-    * tab: une liste
+    * tab_source: une liste
     * start : un entier par défaut à None
     * end : un entier par défaut à None
 
@@ -279,9 +292,11 @@ if __name__==&#34;__main__&#34; :
     &#34;&#34;&#34;
     pass
 
-    global spy
+    # On travaille sur une copie du tableau
+    tab = copy.deepcopy(tab_source)
+    
+    # Pour compter les actions atomiques
     spy = 0
-    sum_spy = 0
 
     # initialiser
     if start is None: start = 0
@@ -292,11 +307,16 @@ if __name__==&#34;__main__&#34; :
     
     # Tant qu&#39;ils sont différents on change l&#39;indice du pivot
     while len(indiceStack)&gt;=2:
+        # On récupère les indices
         end = indiceStack.pop()
-        start = indiceStack.pop()                        
+        start = indiceStack.pop()
+        # On calcule le rang du pivot
         i_pivot = partition(tab, start, end-1)[0]                
-        sum_spy += spy
+        # On récupère le nombre d&#39;actions atomiques
+        spy += partition(tab, start, end-1)[1] #espion
         
+        # On réaffecte le tableau indiceStack=[start,end] avec les nouveaux indices
+        spy += 1 # espion
         if start &lt; i_pivot:
             indiceStack.append(start)
             indiceStack.append(i_pivot)
@@ -304,7 +324,8 @@ if __name__==&#34;__main__&#34; :
         if end &gt; (i_pivot+1):
             indiceStack.append(i_pivot+1)
             indiceStack.append(end)
-    return [tab,sum_spy]    </code></pre>
+
+    return [tab,spy]    </code></pre>
 </details>
 </dd>
 </dl>
