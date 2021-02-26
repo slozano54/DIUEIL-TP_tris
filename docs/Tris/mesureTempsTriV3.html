@@ -42,17 +42,6 @@ import copy
 # Pour pouvoir créer un répertoire, ici pour y mettre les fichiers csv
 import os
 
-# pour pouvoir utiliser la variable globale spy et les méthodes qui s&#39;y rapportent
-# On fait les imports nécessaires selon le contexte
-if __name__ == &#34;__main__&#34;:    
-    #from global_spy import *   
-    from config import *
-else:
-    #from Tris.global_spy import *
-    from Tris.config import *
-
-
-
 def generateurListeCsv(tri, n, nomFichier):
     &#34;&#34;&#34;
     **generateurListeCsv** prend en paramètres :
@@ -116,7 +105,6 @@ def genereToutesLesListes(nombre, n):
         print(str(i+1)+&#34;e liste alléatoire OK&#34;)
         generateurListeCsv(&#34;aleatoire&#34;,n,str(i)+&#34;aleatoire&#34;+str(n)+&#34;.csv&#34;)
                 
-                
 def restitueListe(nomFichier):
     &#34;&#34;&#34;
     **retitueListe** prend en paramètre :
@@ -143,7 +131,6 @@ def restitueListe(nomFichier):
     fichier.close()
     return l
     
-    
 def mesureTempsExecutionTri(fonctionTri, liste):
     &#34;&#34;&#34;
     **mesureTempsExecutionTri** prend en paramètres :
@@ -161,7 +148,6 @@ def mesureTempsExecutionTri(fonctionTri, liste):
     fonctionTri(liste)
     dt=time.time()-t1
     return dt
-    
     
 def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
     &#34;&#34;&#34;
@@ -193,12 +179,10 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
         n=1     
         while n&lt;=nMax :
             listeATrier=copy.deepcopy(listeAleatoire[:n])
-            global spy #espion
-            spy=0     #espion
             t=mesureTempsExecutionTri(fonctionTri, listeATrier)            
             spy = fonctionTri(listeATrier)[1]            
             print(&#34;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;)                                
-            print(&#34;nombre de tours de boucles : &#34;+str(spy))   #espion
+            print(&#34;nombre de tours de boucles spy : &#34;+str(spy))   #espion
             print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)            
             tab.append([spy, t])
             n=n*2
@@ -222,67 +206,7 @@ def tempsTriAleatoire(fonctionTri, nombreTris, nMax, nomFichierRapportCsv):
         fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;;&#34;+str(s)+&#34;\n&#34;)
         y=y+1
 
-    
-    fichier.close()
-
-# def permute(liste,i,j):
-#       &#39;&#39;&#39;
-#       permute les éléments i et j d&#39;une liste
-#       &#39;&#39;&#39;
-#       m=liste[j]
-#       liste[j]=liste[i]
-#       liste[i]=m
-
-# def mini(liste):
-#       &#39;&#39;&#39;
-#       renvoie un tuple contenant la valeur la plus petite et son indice correspondant
-#       &#39;&#39;&#39;
-#       N=len(liste)
-#       m=liste[0]
-#       indiceMini=0
-#       i=1
-#       while i&lt;N :
-#               if m&gt;liste[i]:
-#                       m=liste[i]
-#                       indiceMini=i
-#               i=i+1
-#       return (m,indiceMini)
-    
-# def fctSort(liste):
-#       &#39;&#39;&#39;
-#       mise en forme de la fonction sort pour effectuer le test de mesure de temps
-#       &#39;&#39;&#39;
-#       liste.sort()
-#       return liste
-
-    
-# def triSelection(liste):
-#       &#39;&#39;&#39;
-#       tri par selection
-#       &#39;&#39;&#39;
-#       N=len(liste)
-#       i=0
-#       while i&lt;N :
-#               m=mini(liste[i:])
-#               permute(liste,i,m[1]+i)
-#               i=i+1
-#       return liste
-    
-
-
-if __name__==&#34;__main__&#34; :
-    print(spy)
-
-    
-#       #p=12 #exposant de puissance de 2 pour la taille des listes à trier
-    
-#       #genereToutesLesListes(3, pow(2,p))
-    
-#       # tempsTriAleatoire(fctSort, 3, pow(2,p), &#34;sortListeAleatoire.csv&#34;)
-    
-#       # tempsTriAleatoire(tri_bulles_plus.tri_bulles_plus, 3, pow(2,p), &#34;bullesPlusListeAleatoire.csv&#34;)
-    
-#       # tempsTriAleatoire(triSelection, 3, pow(2,p), &#34;selectionListeAleatoire.csv&#34;)</code></pre>
+    fichier.close()</code></pre>
 </details>
 </section>
 <section>
@@ -511,12 +435,10 @@ if __name__==&#34;__main__&#34; :
         n=1     
         while n&lt;=nMax :
             listeATrier=copy.deepcopy(listeAleatoire[:n])
-            global spy #espion
-            spy=0     #espion
             t=mesureTempsExecutionTri(fonctionTri, listeATrier)            
             spy = fonctionTri(listeATrier)[1]            
             print(&#34;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;)                                
-            print(&#34;nombre de tours de boucles : &#34;+str(spy))   #espion
+            print(&#34;nombre de tours de boucles spy : &#34;+str(spy))   #espion
             print(&#34;temps pour trier &#34;+str(n)+&#34; entiers d&#39;une liste aléatoire : &#34;+str(t)+&#34; s&#34;)            
             tab.append([spy, t])
             n=n*2
@@ -540,7 +462,6 @@ if __name__==&#34;__main__&#34; :
         fichier.write(str(pow(2,y))+&#34;;&#34;+str(t)+&#34;;&#34;+str(s)+&#34;\n&#34;)
         y=y+1
 
-    
     fichier.close()</code></pre>
 </details>
 </dd>

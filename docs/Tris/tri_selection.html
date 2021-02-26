@@ -43,19 +43,20 @@
 &#34;&#34;&#34;
 pass
 
+#pour copier une variable
+import copy 
+
 # On fait les imports nécessaires selon le contexte
 if __name__ == &#34;__main__&#34;:    
     import utils as ui
-    from config import *
 else:
     import Tris.utils as ui   
-    from Tris.config import *    
     
-def tri_selection(tab:list)-&gt;list:
+def tri_selection(tab_source:list)-&gt;list:
     &#34;&#34;&#34;
     Fonction de tri par selection
 
-    **Paramètres** tab : Une liste.        
+    **Paramètres** tab_source : Une liste.        
     **Sorties** le tableau trié    
     **Exemples**
     &gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
@@ -64,9 +65,13 @@ def tri_selection(tab:list)-&gt;list:
     &#34;&#34;&#34;
     pass
 
+    # On va travailler sur une copie du tableau de manière à pouvoir faire plusieurs appels
+    # de la fonction sans modifier le tableau d&#39;origine  
+    tab = copy.deepcopy(tab_source)
+
     # Taille du tableau
     n = len(tab)
-    global spy
+    # Pour compter les actions atomiques
     spy = 0
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
@@ -110,11 +115,11 @@ if __name__==&#34;__main__&#34; :
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="Tris.tri_selection.tri_selection"><code class="name flex">
-<span>def <span class="ident">tri_selection</span></span>(<span>tab: list) ‑> list</span>
+<span>def <span class="ident">tri_selection</span></span>(<span>tab_source: list) ‑> list</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Fonction de tri par selection</p>
-<p><strong>Paramètres</strong> tab : Une liste.
+<p><strong>Paramètres</strong> tab_source : Une liste.
 <br>
 <strong>Sorties</strong> le tableau trié
 <br>
@@ -126,11 +131,11 @@ if __name__==&#34;__main__&#34; :
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def tri_selection(tab:list)-&gt;list:
+<pre><code class="python">def tri_selection(tab_source:list)-&gt;list:
     &#34;&#34;&#34;
     Fonction de tri par selection
 
-    **Paramètres** tab : Une liste.        
+    **Paramètres** tab_source : Une liste.        
     **Sorties** le tableau trié    
     **Exemples**
     &gt;&gt;&gt; my_tab_to_sort = [5,1,2,4,3]
@@ -139,9 +144,13 @@ if __name__==&#34;__main__&#34; :
     &#34;&#34;&#34;
     pass
 
+    # On va travailler sur une copie du tableau de manière à pouvoir faire plusieurs appels
+    # de la fonction sans modifier le tableau d&#39;origine  
+    tab = copy.deepcopy(tab_source)
+
     # Taille du tableau
     n = len(tab)
-    global spy
+    # Pour compter les actions atomiques
     spy = 0
 
     # On ne trie le tableau que s&#39;il a plus qu&#39;un seul élément
