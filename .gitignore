@@ -4,5 +4,10 @@
 # on ignore tous les csv
 *.csv
 
-# On ignore le zip
+# On ignore les zip
 #diueil-TP_tris.zip
+*.zip
+
+#on ignore ce fichier de tests
+Tris/tri_rapide_non_recursif_tests.py
+programmePrincipal copy.py
