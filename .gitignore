@@ -6,7 +6,7 @@
 
 # On ignore les zip
 #diueil-TP_tris.zip
-*.zip
+#*.zip
 
 #on ignore ce fichier de tests
 Tris/tri_rapide_non_recursif_tests.py
