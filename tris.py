@@ -143,7 +143,19 @@ def partition(tab, start, end):
     return start
  
 def tri_rapide_non_recursif(tab, start=None, end=None):
-    """tri rapide non récursif."""
+    """
+    Tri rapide non récursif.
+
+    **Paramètres**
+
+    * tab_source: une liste
+    * start : un entier par défaut à None
+    * end : un entier par défaut à None
+
+    **Sorties** Le tableau trié
+    """
+    
+    pass
     # initialiser
     if start is None: start = 0
     if end is None: end = len(tab)
@@ -215,9 +227,11 @@ def tri_selection(tab:list)->list:
     return tab    
 
 def tri_sort(tab:list)->list:
-    '''
+    """
     mise en forme de la fonction sort pour effectuer le test de mesure de temps
-    '''
+    """
+    pass
+
     tab.sort()
     return tab
 

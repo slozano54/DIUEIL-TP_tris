@@ -8,9 +8,11 @@ import copy
 def generateurListeCsv(tri, n, nomFichier):
 	"""
 	generateurListeCsv prend en paramètres :
-		- tri : une chaine de caractère désignant si la liste est triée  d'une certaine manière ou non : prend les valeurs "CROISSANT", "DECROISSANT" ou "ALEATOIRE";
-		- n : un entier correspondant au nombre d'éléments dans la liste;
-		- nomfichier : une chaine de caractères correspondant au nom de fichier en ".csv" ( ex : "toto.csv" )
+
+	- tri : une chaine de caractère désignant si la liste est triée  d'une certaine manière ou non : prend les valeurs "CROISSANT", "DECROISSANT" ou "ALEATOIRE";
+	- n : un entier correspondant au nombre d'éléments dans la liste;
+	- nomfichier : une chaine de caractères correspondant au nom de fichier en ".csv" ( ex : "toto.csv" )
+
 	generateurListeCsv génère un fichier csv contenant une liste d'entier triée croissante, décroissante ou non triée.
 	"""
 	pass
@@ -43,12 +45,16 @@ def generateurListeCsv(tri, n, nomFichier):
 	fichier.close()
 
 def genereToutesLesListes(nombre, n):
-	'''
+	"""
 	genereToutesLesListes prend en paramètre :
-		- nombre : entier >=1 correspondant au nombre de listes aléatoires à générer;
-		- n : entier correspondant au nombre dentiers dans les listes à générer
+
+	- nombre : entier >=1 correspondant au nombre de listes aléatoires à générer;
+	- n : entier correspondant au nombre dentiers dans les listes à générer
+
 	genereToutesLesListes génère des fichiers .csv contenant des listes d'entiers.
-	'''
+	"""
+	pass
+
 	generateurListeCsv("croissant",n,"croissant"+str(n)+".csv")
 	generateurListeCsv("decroissant",n,"decroissant"+str(n)+".csv")
 	for i in range(nombre):
@@ -57,12 +63,17 @@ def genereToutesLesListes(nombre, n):
 				
 				
 def restitueListe(nomFichier):
-	'''
+	"""
 	retitueListe prend en paramètre :
-		- une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
+	
+	- une chaine de caractères correspondant au nom de fichier csv généré avec la procédure generateurListeCsv.
+	
 	restitueListe renvoie :
-		- une liste d'entier
-	'''
+	
+	- une liste d'entier
+	"""
+	pass
+
 	fichier=open(nomFichier,"r")
 	ligne=fichier.read()
 	l=ligne.split(";")
@@ -76,13 +87,17 @@ def restitueListe(nomFichier):
 	
 	
 def mesureTempsExecutionTri(fonctionTri, liste):
-	'''
+	"""
 	mesureTempsExecutionTri prend en paramètres :
-		- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
-		- liste : une liste d'entiers.
+
+	- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
+	- liste : une liste d'entiers.
+	
 	mesureTempsExecutionTri renvoie :
-		- un flottant correspondant au temps écoulé pour l'exécution de la fonction.
-	'''
+	- un flottant correspondant au temps écoulé pour l'exécution de la fonction.
+	"""
+	pass
+
 	t1=time.time()
 	fonctionTri(liste)
 	dt=time.time()-t1
@@ -90,15 +105,18 @@ def mesureTempsExecutionTri(fonctionTri, liste):
 	
 	
 def mesure_temps(fonctionTri, nMax, nomFichierRapportCsv, nomListeATrierCsv):
-	'''
+	"""
 	mesure_temps prend en paramètres :
-		- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
-		- nMax : un entier >=1, correspondant à la taille de la plus grande liste à tester;
-		- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat;
-		- nomListeATrierCsv : une chaine de caractères correpondant au nom du fichier csv contenant une liste de données (nombre entiers) à trier, le nombre de données à trier de la liste doit être >= nMax.
-	mesure_temps affiche le temps mis, et le nombre de tours de boucle effectué par fonctionTri pour effectuer son tri pour différentes longueurs des listes à trier, et génère un fichier csv contenant les résultat de ces mesures et comptages. 
-	'''
+
+	- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
+	- nMax : un entier >=1, correspondant à la taille de la plus grande liste à tester;
+	- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat;
+	- nomListeATrierCsv : une chaine de caractères correpondant au nom du fichier csv contenant une liste de données (nombre entiers) à trier, le nombre de données à trier de la liste doit être >= nMax.
 	
+	mesure_temps affiche le temps mis, et le nombre de tours de boucle effectué par fonctionTri pour effectuer son tri pour différentes longueurs des listes à trier, et génère un fichier csv contenant les résultat de ces mesures et comptages. 
+	"""
+	pass 
+
 	fichier=open(nomFichierRapportCsv,"w")
 	fichier.write("n;"+nomFichierRapportCsv+" t(s)\n")
 	print("###################  "+nomFichierRapportCsv+"  #####################################")
@@ -121,17 +139,19 @@ def mesure_temps(fonctionTri, nMax, nomFichierRapportCsv, nomListeATrierCsv):
 	fichier.close()
 
 def mesure_complexite(fonctionTri, nMax, nomFichierRapportCsv, nomListeATrierCsv):
-	'''
+	"""
 	mesure_complexite prend en paramètres :
-		- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
-		- nMax : un entier >=1, correspondant à la taille de la plus grande liste à tester;
-		- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat;
-		- nomListeATrierCsv : une chaine de caractères correpondant au nom du fichier csv contenant une liste de données (nombre entiers) à trier, le nombre de données à trier de la liste doit être >= nMax.
+
+	- fonctionTri : une fonction de tri prenant en paramètre une liste d'entiers;
+	- nMax : un entier >=1, correspondant à la taille de la plus grande liste à tester;
+	- nomFichierRapportCsv : une chaine de caractères correpondant au nom du fichier csv contenant les données à renvoyer comme résultat;
+	- nomListeATrierCsv : une chaine de caractères correpondant au nom du fichier csv contenant une liste de données (nombre entiers) à trier, le nombre de données à trier de la liste doit être >= nMax.
 	
 	mesure_complexite nécessite l'insertion de la fonction compteTourBoucle() au sein de chaque boucle (dans le code de la fonction testée) de la fonction à testée.
 	
 	mesure_complexite affiche le temps mis, et le nombre de tours de boucle effectué par fonctionTri pour effectuer son tri pour différentes longueurs des listes à trier, et génère un fichier csv contenant les résultat de ces mesures et comptages. 
-	'''
+	"""
+	pass
 	
 	fichier=open(nomFichierRapportCsv,"w")
 	fichier.write("n;"+nomFichierRapportCsv+" t(s);"+nomFichierRapportCsv+" opérations\n")
@@ -158,9 +178,11 @@ def mesure_complexite(fonctionTri, nMax, nomFichierRapportCsv, nomListeATrierCsv
 
 
 def compteTourBoucle():
-	'''
+	"""
 	procédure qui incrémente lorsqu'elle est appelée la variable globale spy déclarée dans le programme d'appel : permet de compter les tours de boucle
-	'''
+	"""
+	pass
+
 	global spy
 	try:
 		spy=spy+1
@@ -168,9 +190,11 @@ def compteTourBoucle():
 		pass    
 
 def fctSort(liste):
-	'''
+	"""
 	mise en forme de la fonction sort pour effectuer le test de mesure de temps
-	'''
+	"""
+	pass
+
 	liste.sort()
 	return liste
 
