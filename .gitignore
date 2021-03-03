@@ -1,8 +1,10 @@
 # On ignore le dossier .vscode
 .vscode/
 
-# on ignore tous les csv
-csv_files2test/*.csv
+# on ignore certains csv trop lourds
+0aleatoire16777216.csv
+croissant16777216.csv
+decroissant16777216.csv
 
 # On ignore les zip
 *.zip

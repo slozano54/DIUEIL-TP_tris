@@ -227,12 +227,15 @@ def fctSort(liste):
 
 if __name__=="__main__" :    
 
-    p=24 #exposant de puissance de 2 pour la taille des listes à trier
-    genereToutesLesListes(1, pow(2,p))
-    
-    p=12 #exposant de puissance de 2 pour la taille des listes à trier
+    # p=24 #exposant de puissance de 2 pour la taille des listes à trier
+    # genereToutesLesListes(1, pow(2,p))
 
-    #path2csv = "csv_file2test"	
+    # p=10 #exposant de puissance de 2 pour la taille des listes à trier
+    # genereToutesLesListes(1, pow(2,p))
+
+    
+    p=12 #exposant de puissance de 2 pour la taille des listes à trier    
+    #p=8 #exposant de puissance de 2 pour la taille des listes à trier    
 
     mesure_temps(fctSort, pow(2,p), "testTempsSort.csv", "0aleatoire16777216.csv")
     
