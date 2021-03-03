@@ -5,5 +5,5 @@
 csv_files2test/*.csv
 
 # On ignore les zip
-#*.zip
+*.zip
 
