@@ -24,7 +24,7 @@ python3 programmePrincipal.py
 ```
 
 ## Notes
-Les fichiers de la documentation sont générés dans le dossier **./docs/Tris**
+Les fichiers de la documentation sont générés dans le dossier **./docs/diueil-TP_tris**
 
 Les fichiers contenant les tableaux à tester sont générés dans le dossier **./csv_files2test**
 
