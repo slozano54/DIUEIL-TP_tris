@@ -154,7 +154,7 @@ def tri_rapide_non_recursif(tab, start=None, end=None):
 
     **Sorties** Le tableau trié
     """
-    
+
     pass
     # initialiser
     if start is None: start = 0
@@ -235,16 +235,17 @@ def tri_sort(tab:list)->list:
     tab.sort()
     return tab
 
-if __name__=="__main__":
-    #p=10 #exposant de puissance de 2 pour la taille des listes à trier
-    p=24 #exposant de puissance de 2 pour la taille des listes à trier
-    
-    # On génère les fichiers csv puis on commente
+if __name__=="__main__":    
+    # pour générer les csv
+    p=24 #exposant de puissance de 2 pour la taille des listes à trier    
     complexite_temps.genereToutesLesListes(1, pow(2,p))
+
+    #pour les tests
+    p=8 #exposant de puissance de 2 pour la taille des listes à trier
     
-    # complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
     
     # complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
     

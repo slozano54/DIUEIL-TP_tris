@@ -2,7 +2,7 @@
 .vscode/
 
 # on ignore tous les csv
-#*.csv
+csv_files2test/*.csv
 
 # On ignore les zip
 #*.zip
