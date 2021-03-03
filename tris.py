@@ -212,32 +212,33 @@ def tri_selection(tab:list)->list:
     return tab    
 
 def tri_sort(tab:list)->list:
-	'''
-	mise en forme de la fonction sort pour effectuer le test de mesure de temps
-	'''
-	tab.sort()
-	return tab
+    '''
+    mise en forme de la fonction sort pour effectuer le test de mesure de temps
+    '''
+    tab.sort()
+    return tab
 
 if __name__=="__main__":
-	p=10 #exposant de puissance de 2 pour la taille des listes à trier
-	
-	#genereToutesLesListes(1, pow(2,p))
-	
-	complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
+    #p=10 #exposant de puissance de 2 pour la taille des listes à trier
+    p=24
+    
+    complexite_temps.genereToutesLesListes(1, pow(2,p))
+    
+    complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
 
-	complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
-	
-	complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
+    
+    complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
 
 
 
