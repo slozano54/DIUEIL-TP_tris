@@ -20,4 +20,5 @@
 #==========> https://google.github.io/styleguide/pyguide.html  
 #########################################################################################
 
-pdoc --force --html -o docs ./
+#pdoc --force --html -o docs ./
+pdoc --force --html -o ./ ./
