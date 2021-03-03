@@ -26,18 +26,23 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import time
+<pre><code class="python">#!/usr/bin/python3
+#-*- coding: utf8 -*-
+
+import time
 import random
 import copy
 
 def generateurListeCsv(tri, n, nomFichier):
-        &#39;&#39;&#39;
+        &#34;&#34;&#34;
         generateurListeCsv prend en paramètres :
                 - tri : une chaine de caractère désignant si la liste est triée  d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
                 - n : un entier correspondant au nombre d&#39;éléments dans la liste;
                 - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
         generateurListeCsv génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
-        &#39;&#39;&#39;
+        &#34;&#34;&#34;
+        pass
+
         fichier=open(nomFichier,&#34;w&#34;)
         if tri.lower()==&#34;croissant&#34; :
                 i=0
@@ -273,13 +278,15 @@ generateurListeCsv génère un fichier csv contenant une liste d'entier triée c
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def generateurListeCsv(tri, n, nomFichier):
-        &#39;&#39;&#39;
+        &#34;&#34;&#34;
         generateurListeCsv prend en paramètres :
                 - tri : une chaine de caractère désignant si la liste est triée  d&#39;une certaine manière ou non : prend les valeurs &#34;CROISSANT&#34;, &#34;DECROISSANT&#34; ou &#34;ALEATOIRE&#34;;
                 - n : un entier correspondant au nombre d&#39;éléments dans la liste;
                 - nomfichier : une chaine de caractères correspondant au nom de fichier en &#34;.csv&#34; ( ex : &#34;toto.csv&#34; )
         generateurListeCsv génère un fichier csv contenant une liste d&#39;entier triée croissante, décroissante ou non triée.
-        &#39;&#39;&#39;
+        &#34;&#34;&#34;
+        pass
+
         fichier=open(nomFichier,&#34;w&#34;)
         if tri.lower()==&#34;croissant&#34; :
                 i=0

@@ -1,15 +1,20 @@
+#!/usr/bin/python3
+#-*- coding: utf8 -*-
+
 import time
 import random
 import copy
 
 def generateurListeCsv(tri, n, nomFichier):
-	'''
+	"""
 	generateurListeCsv prend en paramètres :
 		- tri : une chaine de caractère désignant si la liste est triée  d'une certaine manière ou non : prend les valeurs "CROISSANT", "DECROISSANT" ou "ALEATOIRE";
 		- n : un entier correspondant au nombre d'éléments dans la liste;
 		- nomfichier : une chaine de caractères correspondant au nom de fichier en ".csv" ( ex : "toto.csv" )
 	generateurListeCsv génère un fichier csv contenant une liste d'entier triée croissante, décroissante ou non triée.
-	'''
+	"""
+	pass
+
 	fichier=open(nomFichier,"w")
 	if tri.lower()=="croissant" :
 		i=0
