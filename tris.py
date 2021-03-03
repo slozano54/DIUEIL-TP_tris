@@ -154,7 +154,11 @@ def tri_rapide_non_recursif(tab, start=None, end=None):
 
     **Sorties** Le tableau trié
     """
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7d74c1683c9e5535439f5f5b8cc509cbc1bd5548
     pass
     # initialiser
     if start is None: start = 0
