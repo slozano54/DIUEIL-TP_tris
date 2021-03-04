@@ -236,8 +236,9 @@ def tri_sort(tab:list)->list:
 
 if __name__=="__main__":    
     # pour générer les csv
-    p=24 #exposant de puissance de 2 pour la taille des listes à trier    
-    complexite_temps.genereToutesLesListes(1, pow(2,p))
+    # Générer la première fois une grosse liste puis commenter
+    # p=24 #exposant de puissance de 2 pour la taille des listes à trier    
+    # complexite_temps.genereToutesLesListes(1, pow(2,p))
 
     #pour les tests
     p=8 #exposant de puissance de 2 pour la taille des listes à trier
@@ -246,17 +247,17 @@ if __name__=="__main__":
     
     complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
 
-    # complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
     
-    # complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
+    complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
 
 
 
