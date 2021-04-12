@@ -123,60 +123,148 @@ def isGreater(x:int,y:int)->bool:
         isGreater = False
     return isGreater
 
-def partition(tab, start, end):
-    while start < end:
-        # au debut de cette boucle, on partitionne avec start
-        complexite_temps.compteTourBoucle()                                           #espion
-        while start < end:
-            complexite_temps.compteTourBoucle()                                           #espion
-            if isGreater(tab[start], tab[end]):
-                (tab[start], tab[end]) = (tab[end], tab[start])
-                break
-            end = end - 1
-        # au debut de cette boucle, on partitionne avec end
-        while start < end:            
-            complexite_temps.compteTourBoucle()                                           #espion
-            if isGreater(tab[start], tab[end]):                
-                (tab[start], tab[end]) = (tab[end], tab[start])
-                break
-            start = start + 1
-    return start
+# def partition(tab, start, end):
+#     while start < end:
+#         # au debut de cette boucle, on partitionne avec start
+#         complexite_temps.compteTourBoucle()                                           #espion
+#         while start < end:
+#             complexite_temps.compteTourBoucle()                                           #espion
+#             if isGreater(tab[start], tab[end]):
+#                 (tab[start], tab[end]) = (tab[end], tab[start])
+#                 break
+#             end = end - 1            
+#         # au debut de cette boucle, on partitionne avec end
+#         while start < end:            
+#             complexite_temps.compteTourBoucle()                                           #espion
+#             if isGreater(tab[start], tab[end]):                
+#                 (tab[start], tab[end]) = (tab[end], tab[start])
+#                 break
+#             start = start + 1
+#     return start
  
-def tri_rapide_non_recursif(tab, start=None, end=None):
+# # def tri_rapide_non_recursif(tab, start=None, end=None):
+#     """
+#     Tri rapide non récursif.
+
+#     **Paramètres**
+
+#     * tab_source: une liste
+#     * start : un entier par défaut à None
+#     * end : un entier par défaut à None
+
+#     **Sorties** Le tableau trié
+#     """
+#     pass
+#     # initialiser
+#     if start is None: start = 0
+#     if end is None: end = len(tab)
+    
+#     # Au départ l'indice de début et de fin utilisés pour partitionner sont différents
+#     indiceStack = [start,end]
+    
+#     # Tant qu'ils sont différents on change l'indice du pivot
+#     while len(indiceStack)>=2:
+#         complexite_temps.compteTourBoucle()                                           #espion
+#         end = indiceStack.pop()
+#         start = indiceStack.pop()        
+#         i_pivot = partition(tab, start, end-1)
+        
+#         if start < i_pivot:
+#             indiceStack.append(start)
+#             indiceStack.append(i_pivot)
+
+#         if end > (i_pivot+1):
+#             indiceStack.append(i_pivot+1)
+#             indiceStack.append(end)
+#     return tab    
+
+# Partitionner
+def partition(tab, start, end): 
     """
-    Tri rapide non récursif.
+    On choisit arbitrairement le dernier élément comme pivot
+    On le place au bon endroit dans le tableau 
+    Tous les éléments plus petits à gauche du pivot
+    Tous les éléments plus grands à droite du pivot
 
-    **Paramètres**
-
-    * tab_source: une liste
-    * start : un entier par défaut à None
-    * end : un entier par défaut à None
-
-    **Sorties** Le tableau trié
+    tab un tableau, start l'indice de début, end l'indice de fin
     """
-    pass
+    # un indice pour placer le plus petit element au début du tableau
+    i = ( start - 1 ) 
+    # arbitrairement le dernier élément du tableau comme pivot
+    pivot = tab[end] 
+    
+    # Pour tous les éléments du tableau
+    for j in range(start, end):
+        # print("==deb=== j : ", j) 
+        # print(i)
+        # print(tab)        
+        #si l'élément j du tableau est inferieur ou égal au pivot
+        if   tab[j] <= pivot:   
+            # On incremente l'indice du plus petit élément
+            # RAPPEL on était partis de l'indice i=-1 donc maintenant ce sera 0 si le premier élément est inférieur au pivot
+            i = i + 1
+            # On echange les éléments d'indice i et j, au départ avec lui même éventuellement
+            tab[i], tab[j] = tab[j], tab[i] 
+        # print(i)
+        # print(tab)
+        # print("==fin===") 
+    # Tous les éléments d'indices entre start et end qui sont inférieurs au pivot sont maintenant à gauche du pivot
+    # On échange les éléments d'indices i+1 et end car on ne s'est pas occupé de l'indice end dans la boucle
+    tab[i + 1], tab[end] = tab[end], tab[i + 1] 
+    # i+1 est l'indice du premier élément supérieur au pivot
+    return (i + 1) 
+  
+def tri_rapide_non_recursif(tab, start=None, end=None): 
+    """
+    tab un tableau, start l'indice de début, end l'indice de fin
+    start et end à None pour initaliser comme les autres fonctions de tri
+    """
+
     # initialiser
     if start is None: start = 0
-    if end is None: end = len(tab)
-    
-    # Au départ l'indice de début et de fin utilisés pour partitionner sont différents
-    indiceStack = [start,end]
-    
-    # Tant qu'ils sont différents on change l'indice du pivot
-    while len(indiceStack)>=2:
-        complexite_temps.compteTourBoucle()                                           #espion
-        end = indiceStack.pop()
-        start = indiceStack.pop()        
-        i_pivot = partition(tab, start, end-1)
-        
-        if start < i_pivot:
-            indiceStack.append(start)
-            indiceStack.append(i_pivot)
+    if end is None: end = len(tab)-1
 
-        if end > (i_pivot+1):
-            indiceStack.append(i_pivot+1)
-            indiceStack.append(end)
-    return tab    
+    # On crée une pile au maximum sa taille est celle du tableau
+    size = end - start + 1 # la taille du tableau
+    stack = [0] * (size) # On initialise la pile avec des 0
+
+    # On initialise le haut de la pile    
+    top = -1
+  
+    # On pousse les valeurs initiales start end au début de la pile
+    top = top + 1
+    stack[top] = start 
+    top = top + 1
+    stack[top] = end     
+  
+    # On place les éléments du tableau tant que la pile n'est pas vide
+    while top >= 0:
+  
+        # On récupère end et start de la pile        
+        end = stack[top] 
+        top = top - 1
+        start = stack[top] 
+        top = top - 1
+          
+        # On place le pivot à sa place définitive dans le tableau trié        
+        p = partition( tab, start, end ) 
+
+        # Si il y a des éléments inférieurs au pivot,
+        # On pousse leurs indices à gauche de la pile
+        if p-1 > start: 
+            top = top + 1
+            stack[top] = start 
+            top = top + 1
+            stack[top] = p - 1        
+  
+        # Si il y a des éléments supérieurs au pivot,
+        # On pousse leurs indices à droite de la pile
+        if p + 1 < end: 
+            top = top + 1
+            stack[top] = p + 1
+            top = top + 1
+            stack[top] = end         
+    return tab
 
 def tri_selection(tab:list)->list:
     """Fonction de tri par selection
@@ -240,24 +328,28 @@ if __name__=="__main__":
     # p=24 #exposant de puissance de 2 pour la taille des listes à trier    
     # complexite_temps.genereToutesLesListes(1, pow(2,p))
 
-    #pour les tests
-    p=8 #exposant de puissance de 2 pour la taille des listes à trier
+    # #pour les tests
+    # p=8 #exposant de puissance de 2 pour la taille des listes à trier
     
-    complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_temps(tri_rapide_non_recursif, pow(2,p), "tempsPivot.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_complexite(tri_rapide_non_recursif, pow(2,p), "complexPivot.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_temps(tri_bulles, pow(2,p), "tempsBulles.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_complexite(tri_bulles, pow(2,p), "complexBulles.csv", "0aleatoire16777216.csv")
 
-    complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_temps(tri_selection, pow(2,p), "tempsSelection.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_complexite(tri_selection, pow(2,p), "complexSelection.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_temps(tri_sort, pow(2,p), "tempsSort.csv", "0aleatoire16777216.csv")
     
-    complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
+    # complexite_temps.mesure_complexite(tri_sort, pow(2,p), "complexSort.csv", "0aleatoire16777216.csv")
+
+    print(partition([9,-3,5,2,6,8,-6,1,3],0,8))
+    print(tri_rapide_non_recursif([9,-3,5,2,6,8,-6,1,3]))
+    #print(tri_rapide_non_recursif([9,8,7,6,5,4,3,2,1]))
 
 
 
